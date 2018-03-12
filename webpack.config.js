@@ -19,8 +19,16 @@ if (env === 'production') {
   devtool = '#eval-source-map'
 }
 
+plugins.push(new webpack.ProvidePlugin({
+  Backbone: 'backbone',
+  _: 'underscore',
+  Promise: 'es6-promise-promise',
+  Vue: 'vue',
+  Vuex: 'vuex'
+}))
+
 module.exports = {
-  entry: path.join(__dirname, 'src/main.js'),
+  entry: ['babel-polyfill', path.join(__dirname, 'src/main.js')],
   output:{
     path: path.join(__dirname, 'dist'),
     filename:'bundle.js'

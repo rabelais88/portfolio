@@ -1,70 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-.page-move{
-  transition:transform 0.5s;
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .25s;
 }
 
-.page-leave-active{
-  transition:all 0.5s ease;
+.fade-enter-active {
+  transition-delay: .25s;
 }
 
-.page-enter-active, .page-appear-active{
-  transition:all 0.5s ease-in;
-}
-
-.page-leave-to{
-  opacity:0;
-  transform:translateY(50%);
-}
-
-.page-enter{
-  opacity:0;
-  transform:translateX(50%);
-}
-
-.page-appear{
-  opacity:0;
-  transform:translateX(50%);
-}
-
-.title-move{
-  transition:transform 0.5s;
-}
-
-.title-leave-active{
-  transition:all 0.5s ease;
-}
-
-.title-enter-active, .title-appear-active{
-  transition:all 0.5s ease-in;
-}
-
-.title-leave-to{
-  opacity:0;
-  transform:translateY(50%);
-}
-
-.title-enter{
-  opacity:0;
-  transform:translateY(50%);
-}
-
-.title-appear{
-  opacity:0;
-  transform:translateY(50%);
-}
-
-
-
-.navBar a{
-  text-decoration:none;
-  transition:0.5s;
-}
-
-.navBar a:hover{
-  transition:0.5s;
-  opacity:0.5;
-  background-color:red;
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 
 body{

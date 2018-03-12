@@ -1,7 +1,8 @@
 <template>
-  <transition name="page">
+  <div>
+    <navmenua></navmenua>
     <p>this is an article page</p>
-  </transition>
+  </div>
 </template>
 
 <script>

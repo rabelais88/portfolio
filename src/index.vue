@@ -1,16 +1,14 @@
 <template>
   <div>
-    <video-bg :sources="['./dist/backdrop.mp4']">
+    <videoback :sources="['./dist/backdrop.mp4']">
+      <navmenu></navmenu>
       <div class="backdrop">
-      <transition name="title" appear>
-        <div>
-          <h1>Park Sungryeol</h1>
-          <hr/>
-          <h1>박성렬</h1>
-        </div>
-      </transition>
+        <p data-aos="zoom-out" data-aos-duration="1000">work & portfolio</p>
+        <h1 data-aos="zoom-out" data-aos-duration="1000">Park Sungryeol</h1>
+        <hr/>
+        <h2 data-aos="zoom-out" data-aos-duration="1000">박성렬</h2>
       </div>
-    </video-bg>
+    </videoback>
       <p>testtest</p>
   </div>
 </template>
@@ -26,21 +24,28 @@ export default {
   display:flex;
   justify-content:center;
   align-items:center;
+  flex-direction:column;
   text-align:center;
   width:100%;
   height:100%;
-  background-color:rgba(0,0,0,0.2);
 }
-.backdrop h1{
+.backdrop h1, .backdrop h2, .backdrop p{
   color:white;
   text-shadow:0 2px 2px black;
+}
+.backdrop h1{
   font-size:5rem;
 }
+.backdrop h2{
+  font-size:3rem;
+  font-weight:500;
+}
+
 .backdrop hr{
-  width:400px;
+  width:100px;
   border-top:none;
   border-bottom:solid 1px white;
-  margin-top:20px;
+  padding-top:20px;
   margin-bottom:20px;
 }
 

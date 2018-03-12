@@ -1,3 +1,5 @@
+import 'es6-promise/auto'
+import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -7,9 +9,13 @@ import articles from './articles.vue'
 import index from './index.vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import videoBack from './videoback.vue'
+import videoback from './videoback.vue'
+import navmenu from './navmenu.vue'
+import navmenua from './navmenua.vue'
 
-Vue.component('video-bg', videoBack)
+Vue.component('videoback', videoback)
+Vue.component('navmenu',navmenu)
+Vue.component('navmenua',navmenua)
 
 const routes = [
   { path : '/', component: index },
@@ -27,15 +33,14 @@ new Vue({
   },
   template:
   `<div>
-    <div class="navBar" data-aos="zoom-in">
-      <router-link to="/" tag="a">INDEX</router-link>
-      <router-link to="/articles" tag="a">POSTS</router-link>
-    </div>
+    <transition name="fade">
     <router-view></router-view>
+    </transition>
   </div>`,
   components:{
     articles:articles,
-    'video-bg':videoBack
+    videoback:videoback,
+    navmenu:navmenu
   },
   router: router,
   mounted(){
