@@ -7,9 +7,12 @@
         <h1 data-aos="zoom-out" data-aos-duration="1000">Park Sungryeol</h1>
         <hr/>
         <h2 data-aos="zoom-out" data-aos-duration="1000">박성렬</h2>
+        <a href="#down" v-smooth-scroll="{duration:1500}">아래로</a>
       </div>
     </videoback>
-      <p>testtest</p>
+    <div style="height:500px;">
+      <p id="down">testtest</p>
+    </div>
   </div>
 </template>
 

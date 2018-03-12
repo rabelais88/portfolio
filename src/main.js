@@ -2,8 +2,10 @@ import 'es6-promise/auto'
 import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import vueSmoothScroll from 'vue-smooth-scroll'
 
 Vue.use(VueRouter)
+Vue.use(vueSmoothScroll)
 
 import articles from './articles.vue'
 import index from './index.vue'

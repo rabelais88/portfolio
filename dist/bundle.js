@@ -158,6 +158,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -14550,18 +14553,43 @@ var render = function() {
                 attrs: { "data-aos": "zoom-out", "data-aos-duration": "1000" }
               },
               [_vm._v("박성렬")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                directives: [
+                  {
+                    name: "smooth-scroll",
+                    rawName: "v-smooth-scroll",
+                    value: { duration: 1500 },
+                    expression: "{duration:1500}"
+                  }
+                ],
+                attrs: { href: "#down" }
+              },
+              [_vm._v("아래로")]
             )
           ])
         ],
         1
       ),
       _vm._v(" "),
-      _c("p", [_vm._v("testtest")])
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { height: "500px" } }, [
+      _c("p", { attrs: { id: "down" } }, [_vm._v("testtest")])
+    ])
+  }
+]
 render._withStripped = true
 
 if (false) {}
@@ -17403,6 +17431,17 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["default"] = (VueRouter);
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-smooth-scroll/dist/vue-smooth-scroll.min.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/vue-smooth-scroll/dist/vue-smooth-scroll.min.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(this,function(){return function(e){function t(n){if(o[n])return o[n].exports;var i=o[n]={exports:{},id:n,loaded:!1};return e[n].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var o={};return t.m=e,t.c=o,t.p="",t(0)}([function(e,t){"use strict";function o(e){return e<.5?4*e*e*e:(e-1)*(2*e-2)*(2*e-2)+1}var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};e.exports={install:function(e){e.directive("smooth-scroll",{inserted:function(e,t){"object"===("undefined"==typeof window?"undefined":n(window))&&void 0!==window.pageYOffset&&e.addEventListener("click",function(e){var n=document.getElementById(this.hash.substring(1));if(n){e.preventDefault(),window.history.pushState&&location.hash!==this.hash&&window.history.pushState("","",this.hash);var i=t.value&&t.value.duration?t.value.duration:500,r=t.value&&t.value.offset?t.value.offset:0,u=Date.now(),f="HTML"===n.nodeName?-window.pageYOffset:n.getBoundingClientRect().top+window.pageYOffset;f+=r;var a=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||function(e){window.setTimeout(e,15)},s=function e(){var t=Date.now()-u,r=f;t<i?(r=window.pageYOffset+(f-window.pageYOffset)*o(t/i),a(e)):location.replace("#"+n.id),window.scroll(0,r)};s()}})}})}}}])});
 
 /***/ }),
 
@@ -28894,6 +28933,10 @@ var _vueRouter = __webpack_require__(/*! vue-router */ "./node_modules/vue-route
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _vueSmoothScroll = __webpack_require__(/*! vue-smooth-scroll */ "./node_modules/vue-smooth-scroll/dist/vue-smooth-scroll.min.js");
+
+var _vueSmoothScroll2 = _interopRequireDefault(_vueSmoothScroll);
+
 var _articles = __webpack_require__(/*! ./articles.vue */ "./src/articles.vue");
 
 var _articles2 = _interopRequireDefault(_articles);
@@ -28923,6 +28966,7 @@ var _navmenua2 = _interopRequireDefault(_navmenua);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(_vueRouter2.default);
+_vue2.default.use(_vueSmoothScroll2.default);
 
 _vue2.default.component('videoback', _videoback2.default);
 _vue2.default.component('navmenu', _navmenu2.default);
@@ -29114,7 +29158,7 @@ if (false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! F:\mycoding\vuepageeffect\src\main.js */"./src/main.js");
+module.exports = __webpack_require__(/*! F:\mycoding\portfolio\src\main.js */"./src/main.js");
 
 
 /***/ }),
