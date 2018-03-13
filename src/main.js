@@ -3,9 +3,11 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueSmoothScroll from 'vue-smooth-scroll'
+import VueParallaxJs from 'vue-parallax-js'
 
 Vue.use(VueRouter)
 Vue.use(vueSmoothScroll)
+Vue.use(VueParallaxJs,{})
 
 import articles from './articles.vue'
 import index from './index.vue'

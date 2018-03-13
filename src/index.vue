@@ -7,7 +7,7 @@
         <h1 data-aos="zoom-out" data-aos-duration="1000">Park Sungryeol</h1>
         <hr/>
         <h2 data-aos="zoom-out" data-aos-duration="1000">박성렬</h2>
-        <a href="#about" v-smooth-scroll="{duration:1500}" class="clicker">
+        <a href="#about" v-smooth-scroll="{duration:1000}" class="clicker">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             width="35px" height="20px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
             <path fill="#ffffff" d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937
@@ -21,27 +21,28 @@
       <h1 data-aos="fade-up">Hello,</h1>
       <h2 data-aos="fade-up">안녕하세요,</h2>
       <hr />
-      <p>I am a full stack web developer, web designer, translator</p>
-      <p>who works in <b>{{location}}.</b></p>
+      <p>I am a full stack web developer, web designer, translator<br/>
+        who works in <b>{{location}}.</b></p>
       <br/>
       <p>I speak <b>{{ languages.length }}</b> languages</p>
-      <div class="contBadge marginer">
-        <div v-for="(elLang,index) in languages" :key="index" class="badge">
+      <div class="badgeLang marginer">
+        <div v-for="(elLang,index) in languages" :key="index">
           <div><b>{{elLang[0]}}</b></div>
           <div>{{elLang[1]}}</div>
         </div>
       </div>
       <p>I use <b>{{ programs.length }}</b> tools</p>
-      <div class="marginer"> 
-        <carousel :navigationEnabled="true" :autoplay="true" :perPage="3" :perPageCustom="[[768, 4]]">
-          <slide v-for="(elProg, index) in programs" :key="index" >
-            <div class="badgeTool">
-              <img v-if="elProg[1]" :src="elProg[1]" class="logoTool"/>
-              {{elProg[0]}}
-            </div>
-          </slide>
-        </carousel>
-      </div>
+      <carousel :navigationEnabled="true" :autoplay="true" :perPage="3" :perPageCustom="[[768, 4]]">
+        <slide v-for="(elProg, index) in programs" :key="index" >
+          <div class="badgeTool">
+            <img v-if="elProg[1]" :src="elProg[1]"/>
+            {{elProg[0]}}
+          </div>
+        </slide>
+      </carousel>
+      <div class="spacer"></div>
+      <h1>Articles</h1>
+      <hr />
     </div>
   </div>
 </template>
@@ -57,19 +58,20 @@ export default {
         ['Node.js', '/dist/logo_node.png'],
         ['React.js','/dist/logo_react.png'],
         ['Vue.js','/dist/logo_vue.png'],
-        ['webpack','/dist/logo_webpack.jpg'],
+        ['Webpack','/dist/logo_webpack.jpg'],
         ['Babel','/dist/logo_babel.png'],
-        ['Express'],
-        ['Linux(CentOS)'],
-        ['Express.js'],
-        ['PostgreSQL'],
-        ['MySQL'],
-        ['Python'],
-        ['MongoDB'],
-        ['JQuery'],
-        ['Adobe Photoshop'],
-        ['Adobe Illustrator'],
-        ['Adobe After Effects']
+        ['Express.js','/dist/logo_express.png'],
+        ['Linux(CentOS)','/dist/logo_centos.png'],
+        ['PostgreSQL','/dist/logo_postgresql.png'],
+        ['MySQL','/dist/logo_mysql.png'],
+        ['Python','/dist/logo_python.png'],
+        ['MongoDB','/dist/logo_mongodb.png'],
+        ['JQuery','/dist/logo_jquery.png'],
+        ['SASS','/dist/logo_sass.png'],
+        ['Yarn','/dist/logo_yarn.png'],
+        ['Adobe Photoshop','/dist/logo_photoshop.png'],
+        ['Adobe Illustrator','/dist/logo_illustrator.png'],
+        ['Adobe After Effects','/dist/logo_aftereffects.png']
       ]
     }
   },
@@ -80,7 +82,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .backdrop{
   display:flex;
   justify-content:center;
@@ -89,25 +92,30 @@ export default {
   text-align:center;
   width:100%;
   height:100%;
+  
+  h1, h2, p{
+    color:white;
+    text-shadow:0 2px 2px black;
+  }
+
+  h1{
+    font-size:5rem;
+  }
+
+  h2{
+    font-size:3rem;
+    font-weight:500;
+  }
+
+  hr{
+    width:100px;
+    border-top:none;
+    border-bottom:solid 1px white;
+    padding-top:20px;
+    margin-bottom:20px;
+  }
 }
-.backdrop h1, .backdrop h2, .backdrop p{
-  color:white;
-  text-shadow:0 2px 2px black;
-}
-.backdrop h1{
-  font-size:5rem;
-}
-.backdrop h2{
-  font-size:3rem;
-  font-weight:500;
-}
-.backdrop hr{
-  width:100px;
-  border-top:none;
-  border-bottom:solid 1px white;
-  padding-top:20px;
-  margin-bottom:20px;
-}
+
 .videodrop{
     box-shadow:0 3px 3px rgba(0,0,0,0.4);
 }
@@ -124,37 +132,41 @@ export default {
 #about{
   padding-top:100px;
   text-align:center;
-}
-#about h1{
-  font-size:5rem;
-}
-#about hr{
-  margin-top:20px;
-  margin-bottom:20px;
-  margin-left:calc(50% - 15px);
-  margin-right:calc(50% - 15px);
-  border-top:solid 1px black;
-  border-bottom:solid 1px black;
+
+  h1{
+    font-size:5rem;
+  }
+
+  hr{
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:calc(50% - 15px);
+    margin-right:calc(50% - 15px);
+    border-top:solid 1px black;
+    border-bottom:solid 1px black;
+  }
+  p{
+    margin:20px;
+  }
 }
 
-.contBadge{
+.badgeLang{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-}
 
-
-.badge{
-  background-color:black;
-  color:white;
-  min-width:150px;
-  min-height:150px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  border-radius:150px;
-  margin:20px;
+  > div{
+    background-color:black;
+    color:white;
+    min-width:130px;
+    min-height:130px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    border-radius:150px;
+    margin:20px;
+  }
 }
 
 .badgeTool{
@@ -162,17 +174,24 @@ export default {
   justify-content:center;
   align-items:center;
   flex-direction:column;
-}
+  min-width:150px;
+  min-height:150px;
 
-.logoTool{
-  margin-bottom:10px;
-  object-fit:cover;
-  max-width:100px;
-  max-height:100px;
+  img{
+    margin-bottom:10px;
+    object-fit:cover;
+    max-width:100px;
+    max-height:100px;
+  }
 }
 
 .marginer{
   margin:50px;
+}
+
+.spacer{
+  background-color:transparent;
+  height:200px;
 }
 
 @media only screen and (max-width: 800px) {
