@@ -96,23 +96,52 @@ function fetchFBelement(elFeed){
   })
 }
 
-Promise.all([
-  fetchTwitter(),
-  fetchFacebook()
-]).then((res)=>{
-  let secondaryPromise = []
-  if(res[1].datas){
-    res[1].datas.map((elFeeds)=>{
-      secondaryPromise.push(fetchFBelement(elFeeds))
-    })
-    Promise.all(secondaryPromise).then((FBres)=>{
-      preservePosts(FBres.concat(res[0].datas))
-    })
-  }else{
-    //if there is no FB posts...
-    preservePosts(res[0].datas)
+const samplePosts =
+[
+  {type:'facebook',
+  title:'',
+  content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tellus sem, condimentum sit amet rutrum vitae,',
+  photo:'',date:'', href:'/'},
+  {type:'twitter',
+  title:'',
+  content:'dfjkdfljkdlfldfkdlfkdfldfkelfkflekflekfle',
+  photo:'https://scontent-icn1-1.cdninstagram.com/vp/cd83e638cbe28768080be5ac58ea55b7/5AAC3FDE/t51.2885-15/s320x320/e35/28434248_189586531805588_7004851592578990080_n.jpg',date:'', href:'/'},
+  {type:'random',
+  title:'가나다라마바사아자차카',
+  content:'동해물과 백두산이 마르고 닳도록 하느님이 보우하사',
+  photo:'',date:'',href:'/'}
+]
+
+if(settings.enableScrape === true){
+  Promise.all([
+    fetchTwitter(),
+    fetchFacebook()
+  ]).then((res)=>{
+    let secondaryPromise = []
+    if(res[1].datas){
+      res[1].datas.map((elFeeds)=>{
+        secondaryPromise.push(fetchFBelement(elFeeds))
+      })
+      Promise.all(secondaryPromise).then((FBres)=>{
+        preservePosts(FBres.concat(res[0].datas))
+      })
+    }else{
+      //if there is no FB posts...
+      preservePosts(res[0].datas)
+    }
+  })
+}else{
+  //a sample post for testing
+  const maxposts = 20
+  let samplers = []
+  for(var i = 0;i< maxpost;i++){
+    const rnd = Math.round(Math.random(samplePosts.length - 1))
+    samplers.push(samplePosts[rnd])
   }
-})
+  preservePosts(samplers)
+}
+
+
 
 function preservePosts(data){
   console.log(`${data.length} posts collected`)

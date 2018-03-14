@@ -3,5 +3,6 @@ module.exports = {
     facebook:'',
     twitter:'http://twitter.com/ParkWebdev'
   },
-  maxString:120
+  maxString:120,
+  enableScrape:false
 }
