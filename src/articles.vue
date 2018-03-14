@@ -2,17 +2,20 @@
   <div>
     <navmenua></navmenua>
     <div id="backdrop">
-    <p>these are my recent posts on social media</p>
+      <p>these are my recent posts on social media</p>
     </div>
     <div id="contPosts">
       <postviewer v-for="(elPost, index) in posts" :key="index" :postdata="elPost">
       </postviewer>
     </div>
-    <div style="height:2000px;"></div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios,axios)
 
 const sampleposts =[
   {type:'facebook',
@@ -28,14 +31,18 @@ const sampleposts =[
   content:'동해물과 백두산이 마르고 닳도록 하느님이 보우하사',
   photo:'',date:'',href:'/'}
 ]
+
 export default {
   data(){
     return{
-      posts:sampleposts
+      posts:[]
     }
   },
   mounted(){
-
+    Vue.axios.get('/jsonarticles').then((res)=>{
+      console.log(res)
+      this.posts = res.data
+    })
   }
 }
 </script>

@@ -4,27 +4,32 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueSmoothScroll from 'vue-smooth-scroll'
 
+import VueScrollReveal from 'vue-scroll-reveal'
+
 Vue.use(VueRouter)
 Vue.use(vueSmoothScroll)
 
-import articles from './articles.vue'
-import index from './index.vue'
-import VueScrollReveal from 'vue-scroll-reveal'
-import videoback from './videoback.vue'
-import navmenu from './navmenu.vue'
-import navmenua from './navmenua.vue'
-import postviewer from './element.vue'
 
-Vue.component('videoback', videoback)
-Vue.component('navmenu',navmenu)
-Vue.component('navmenua',navmenua)
-Vue.component('postviewer',postviewer)
 Vue.use(VueScrollReveal),{
   duration:800,
   scale:1,
   distance:'10px',
   mobile:false
 }
+
+import articles from './articles.vue'
+import index from './index.vue'
+import videoback from './videoback.vue'
+import navmenu from './navmenu.vue'
+import navmenua from './navmenua.vue'
+import postviewer from './element.vue'
+
+
+Vue.component('videoback', videoback)
+Vue.component('navmenu',navmenu)
+Vue.component('navmenua',navmenua)
+Vue.component('postviewer',postviewer)
+
 
 const routes = [
   { path : '/', component: index },

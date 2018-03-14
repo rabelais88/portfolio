@@ -1,10 +1,12 @@
 <template>
   <div class="elPost">
     <a :href="postdata.href">
+      <div class="photofy" v-if="postdata.photo" :style="{ backgroundImage: 'url(' + postdata.photo + ')' }">&nbsp;</div>
+      <div class="textize">
       <b>{{postdata.type}}</b>
       <h1 v-if="postdata.title">{{postdata.title}}</h1>
       <p>{{postdata.content}}</p>
-      <div class="photofy" v-if="postdata.photo" :style="{ backgroundImage: 'url(' + postdata.photo + ')' }"></div>
+      </div>
     </a>
   </div>
 </template>
@@ -18,13 +20,15 @@ export default{
   transition:0.5s ease;
   background-color:white;
   margin:10px;
-  max-width:300px;
+  width:calc(100% / 3 - 10);
   max-height:300px;
   box-shadow:0 0 3px rgba(0,0,0,0.4);
   padding:30px;
   a{
     text-decoration:none;
     color:black;
+    display:flex;
+    align-items:center;
   }
   &:hover{
     background-color:rgb(240,240,240);
@@ -33,8 +37,20 @@ export default{
   .photofy{
     background-size:cover;
     background-position:center;
-    width:100%;
-    height:200px;
+    width:80px;
+    height:80px;
+    display:block;
+    border-radius:5px;
+    flex-shrink:0;
+  }
+  .textize{
+    flex-shrink: 100;
+    margin-left:20px;
+    flex-grow:1;
+  }
+  p,h1{
+    word-wrap: break-word;
+    word-break:break-all;
   }
 }
 

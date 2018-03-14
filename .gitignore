@@ -56,3 +56,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# my own setting file should be blurred
+./settings.js
