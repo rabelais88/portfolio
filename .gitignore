@@ -58,4 +58,4 @@ typings/
 .env
 
 # my own setting file should be blurred
-./settings.js
+settings.js
