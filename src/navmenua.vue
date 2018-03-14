@@ -1,5 +1,5 @@
 <template>
-   <div class="navBarAlt">
+   <div class="navBarAlt" :class="{navFixed:navMoved}">
     <span>
       <a href="https://github.com/rabelais88">
         <svg height="20px" width="20px" viewBox="0 0 1024 1024"  xmlns="http://www.w3.org/2000/svg">
@@ -23,18 +23,52 @@
   </div>
 </template>
 <script>
+export default {
+  data(){
+    return {
+      navMoved:false
+    }
+  },
+  methods:{
+    scrolled(e){
+      const curScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+      console.log(curScroll)
+      if (curScroll > 0){
+        //if scroll has moved
+        this.navMoved = true
+      }else{
+        this.navMoved = false
+      }
+    }
+  },
+  created(){
+    window.addEventListener('scroll',this.scrolled)
+  },
+  mounted(){
+    this.scrolled('')
+  }
+}
 </script>
 <style lang="scss" scoped>
+.navFixed{
+  position:fixed;
+  background-color:white;
+  box-shadow:0 2px 2px rgba(0,0,0,0.4);
+  transition:0.3s ease;
+}
 
 .navBarAlt {
-  margin:20px;
+  padding:20px;
+  transition:0.3s ease;
+  width:100%;
   
   > a{
     text-decoration:none;
     color:black;
     transition:0.2s;
     position: relative;
-    margin:20px;
+    margin:10px;
+
     &:after{
       content: '';
       position: absolute;

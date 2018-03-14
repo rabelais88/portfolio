@@ -22,7 +22,6 @@
     "vue-carousel": "^0.6.9",
     "vue-hot-reload-api": "^2.3.0",
     "vue-loader": "^14.2.1",
-    "vue-parallax-js": "^0.0.7",
     "vue-router": "^3.0.1",
     "vue-smooth-scroll": "^1.0.13",
     "vue-template-compiler": "^2.5.15",
@@ -34,7 +33,7 @@
     "build": "SET NODE_ENV=production & webpack --mode production"
   },
   "dependencies": {
-    "aos": "^2.2.0",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "vue-scroll-reveal": "^1.0.6"
   }
 }

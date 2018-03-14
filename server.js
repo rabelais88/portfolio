@@ -16,3 +16,15 @@ app.get('/',(req,res)=>{
     res.send(data)
   })
 })
+
+app.get('/articles',(req,res)=>{
+  res.redirect('/')
+})
+
+app.get('/works',(req,res)=>{
+  res.redirect('/')
+})
+
+app.get('/contact',(req,res)=>{
+  res.redirect('/')
+})

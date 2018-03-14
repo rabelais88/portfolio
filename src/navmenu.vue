@@ -1,5 +1,5 @@
 <template>
-   <div class="navBar">
+   <div class="navBar" :class="{navFixed:navMoved}">
     
     <span>
       <a href="https://github.com/rabelais88">
@@ -23,12 +23,45 @@
   </div>
 </template>
 <script>
+export default {
+  data(){
+    return {
+      navMoved:false
+    }
+  },
+  methods:{
+    scrolled(e){
+      const curScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+      console.log(curScroll)
+      if (curScroll > 0){
+        //if scroll has moved
+        this.navMoved = true
+      }else{
+        this.navMoved = false
+      }
+    }
+  },
+  created(){
+    window.addEventListener('scroll',this.scrolled)
+  },
+  mounted(){
+    this.scrolled('')
+  }
+}
 </script>
 <style lang="scss" scoped>
+.navFixed{
+  position:fixed;
+  background-color:rgba(0,0,0,0.8);
+  transition:0.5s ease;
+}
 
 // in scss, pseudo elements must have & in front of it
 .navBar {
-  margin:20px;
+  padding:20px;
+  transition:0.5s ease;
+  z-index:2;
+  width:100%;
   > a{
     text-decoration:none;
     color:white;

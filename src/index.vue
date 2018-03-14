@@ -3,10 +3,14 @@
     <videoback :sources="['./dist/backdrop.mp4']" class="videodrop">
       <navmenu></navmenu>
       <div class="backdrop">
-        <p data-aos="zoom-out" data-aos-duration="1000">work & portfolio</p>
-        <h1 data-aos="zoom-out" data-aos-duration="1000">Park Sungryeol</h1>
-        <hr/>
-        <h2 data-aos="zoom-out" data-aos-duration="1000">박성렬</h2>
+        <p>work & portfolio</p>
+        <transition name="fadeup" appear>
+          <h1>Park Sungryeol</h1>
+        </transition>
+          <hr/>
+        <transition name="fadeup" appear>
+          <h2>박성렬</h2>
+        </transition>
         <a href="#about" v-smooth-scroll="{duration:1000}" class="clicker">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             width="35px" height="20px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
@@ -18,20 +22,21 @@
       </div>
     </videoback>
     <div id="about">
-      <h1 data-aos="fade-up">Hello,</h1>
-      <h2 data-aos="fade-up">안녕하세요,</h2>
+      <h1 v-scroll-reveal.reset>Hello,</h1>
+      <h2 v-scroll-reveal.reset>안녕하세요,</h2>
       <hr />
       <p>I am a full stack web developer, web designer, translator<br/>
         who works in <b>{{location}}.</b></p>
       <br/>
       <p>I speak <b>{{ languages.length }}</b> languages</p>
-      <div class="badgeLang marginer">
+      <div class="badgeLang margin40px">
         <div v-for="(elLang,index) in languages" :key="index">
           <div><b>{{elLang[0]}}</b></div>
           <div>{{elLang[1]}}</div>
         </div>
       </div>
       <p>I use <b>{{ programs.length }}</b> tools</p>
+      <div class="margin40px">
       <carousel :navigationEnabled="true" :autoplay="true" :perPage="3" :perPageCustom="[[768, 4]]">
         <slide v-for="(elProg, index) in programs" :key="index" >
           <div class="badgeTool">
@@ -40,8 +45,9 @@
           </div>
         </slide>
       </carousel>
+      </div>
       <div class="spacer"></div>
-      <h1>Articles</h1>
+      <h1>Who Am I</h1>
       <hr />
     </div>
   </div>
@@ -71,7 +77,9 @@ export default {
         ['Yarn','/dist/logo_yarn.png'],
         ['Adobe Photoshop','/dist/logo_photoshop.png'],
         ['Adobe Illustrator','/dist/logo_illustrator.png'],
-        ['Adobe After Effects','/dist/logo_aftereffects.png']
+        ['Adobe After Effects','/dist/logo_aftereffects.png'],
+        ['Phantom.js',''],
+        ['Casper.js','']
       ]
     }
   },
@@ -129,6 +137,10 @@ export default {
   transition:0.5s;
 }
 
+.margin40px{
+  margin:40px;
+}
+
 #about{
   padding-top:100px;
   text-align:center;
@@ -183,10 +195,6 @@ export default {
     max-width:100px;
     max-height:100px;
   }
-}
-
-.marginer{
-  margin:50px;
 }
 
 .spacer{

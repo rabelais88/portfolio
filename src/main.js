@@ -3,23 +3,28 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueSmoothScroll from 'vue-smooth-scroll'
-import VueParallaxJs from 'vue-parallax-js'
 
 Vue.use(VueRouter)
 Vue.use(vueSmoothScroll)
-Vue.use(VueParallaxJs,{})
 
 import articles from './articles.vue'
 import index from './index.vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import VueScrollReveal from 'vue-scroll-reveal'
 import videoback from './videoback.vue'
 import navmenu from './navmenu.vue'
 import navmenua from './navmenua.vue'
+import postviewer from './element.vue'
 
 Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
 Vue.component('navmenua',navmenua)
+Vue.component('postviewer',postviewer)
+Vue.use(VueScrollReveal),{
+  duration:800,
+  scale:1,
+  distance:'10px',
+  mobile:false
+}
 
 const routes = [
   { path : '/', component: index },
@@ -44,10 +49,8 @@ new Vue({
   components:{
     articles:articles,
     videoback:videoback,
-    navmenu:navmenu
+    navmenu:navmenu,
+    postviewer:postviewer
   },
-  router: router,
-  mounted(){
-    AOS.init()
-  }
+  router: router
 })

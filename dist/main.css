@@ -10,7 +10,16 @@
 }
 
 .fade-enter, .fade-leave-active {
-  opacity: 0
+  opacity: 0;
+}
+
+.fadeup-enter{
+  opacity:0;
+  transform: translateY(30px);
+}
+.fadeup-enter-active{
+  transition-delay:.25s;
+  transition:1s;
 }
 
 body{
