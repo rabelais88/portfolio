@@ -1,8 +1,12 @@
 <template>
   <div>
     <navmenua></navmenua>
-    <div id="backdrop">
-      <p>these are my recent posts on social media</p>
+
+    <div class="title">
+      <h1>Recent posts</h1>
+      <p>on</p>
+      <h2>social media</h2>
+      <div class="vthr"><div class="l"></div><div></div></div>
     </div>
     <div id="contPosts">
       <postviewer v-for="(elPost, index) in posts" :key="index" :postdata="elPost">
@@ -41,10 +45,24 @@ export default {
   font-size:9rem;
   top:0;
   opacity:0.1;
+  color:rgba(0,0,0,0.3);
 }
 #contPosts{
   display:flex;
   flex-wrap:wrap;
 }
-
+.title{
+  padding:20px;
+  text-align:center;
+}
+.vthr{
+  padding:20px;
+  >div{
+    width:50%;
+    height:25px;
+  }
+  .l{
+    border-right:solid 1px black;
+  }
+}
 </style>

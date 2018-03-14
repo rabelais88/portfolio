@@ -20,9 +20,9 @@ export default{
   transition:0.5s ease;
   background-color:white;
   margin:10px;
-  width:calc(100% / 3 - 10);
+  width:calc( 33% - 20px - 60px );
   max-height:300px;
-  box-shadow:0 0 3px rgba(0,0,0,0.4);
+  border-top:solid 2px rgb(150,50,50);
   padding:30px;
   a{
     text-decoration:none;

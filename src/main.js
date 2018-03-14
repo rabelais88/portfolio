@@ -23,7 +23,8 @@ import videoback from './videoback.vue'
 import navmenu from './navmenu.vue'
 import navmenua from './navmenua.vue'
 import postviewer from './element.vue'
-
+import works from './works.vue'
+import contact from './contact.vue'
 
 Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
@@ -33,7 +34,9 @@ Vue.component('postviewer',postviewer)
 
 const routes = [
   { path : '/', component: index },
-  { path : '/articles',component: articles }
+  { path : '/articles',component: articles },
+  { path : '/works', component: works},
+  { path : '/contact', component: contact}
 ]
 
 const router = new VueRouter({
@@ -55,7 +58,9 @@ new Vue({
     articles:articles,
     videoback:videoback,
     navmenu:navmenu,
-    postviewer:postviewer
+    postviewer:postviewer,
+    works:works,
+    contact:contact
   },
   router: router
 })

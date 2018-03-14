@@ -132,7 +132,7 @@ if(settings.enableScrape === true){
   })
 }else{
   //a sample post for testing
-  const maxposts = 20
+  const maxpost = 20
   let samplers = []
   for(var i = 0;i< maxpost;i++){
     const rnd = Math.round(Math.random(samplePosts.length - 1))
