@@ -6,7 +6,16 @@ const http = require('http').Server(app)
 
 const cheerio = require('cheerio-httpcli')
 const FB = require('fb')
-const settings = require('./settings')
+let settings = ''
+try{
+  settings = require('./settings')
+}catch(err){
+  fs.copyFile('samplesettings.js','settings.js',(err)=>{
+    if(err){throw err}
+    console.log('setting.js not found, creating a new sample setting' )
+    settings = require('./settings')
+  })
+}
 
 http.listen(process.env.PORT || 3000, function(){
   console.log("server is up at " + this.address().port)
@@ -43,7 +52,8 @@ const postTemplate = {
   type:'',
   title:'',
   content:'no content',
-  photo:'',href:'/'
+  photo:'',href:'/',
+  time:''
 }
 
 
@@ -54,10 +64,13 @@ function fetchTwitter(){
         reject(err)
       }
       let allTwitters = []
-      $('.tweet-text').each((idx,elTweet)=>{
+      $('.js-stream-item').each((idx,elTweet)=>{
         allTwitters.push(Object.assign({},postTemplate))
-        allTwitters[allTwitters.length - 1].content = $(elTweet).text()
-        allTwitters[allTwitters.length - 1].type = 'twitter'
+        const target = allTwitters.length - 1
+        allTwitters[target].content = $(elTweet).find('.tweet-text').text()
+        allTwitters[target].type = 'twitter'
+        allTwitters[target].time = $(elTweet).find('.time,a').attr('title')
+        allTwitters[target].href = settings.apikeys.twitter
       })
       resolve({type:'twitter',datas:allTwitters})
     })
@@ -88,6 +101,8 @@ function fetchFBelement(elFeed){
         }else{
           newPost.content = elFeed.message
         }
+      }else{
+        newPost.content = elFeed.story
       }
       newPost.href = 'https://facebook.com/' + elFeed.id
       newPost.photo = photoUrl.full_picture
@@ -113,14 +128,18 @@ const samplePosts =
 ]
 
 if(settings.enableScrape === true){
+  console.log('post scrape mode: real scrape')
   Promise.all([
     fetchTwitter(),
     fetchFacebook()
   ]).then((res)=>{
     let secondaryPromise = []
     if(res[1].datas){
-      res[1].datas.map((elFeeds)=>{
-        secondaryPromise.push(fetchFBelement(elFeeds))
+
+      res[1].datas.map((elFeed,index)=>{
+        if(index <= settings.fbMaxRequest){
+          secondaryPromise.push(fetchFBelement(elFeed))
+        }
       })
       Promise.all(secondaryPromise).then((FBres)=>{
         preservePosts(FBres.concat(res[0].datas))
@@ -132,6 +151,7 @@ if(settings.enableScrape === true){
   })
 }else{
   //a sample post for testing
+  console.log('post scrape mode: sample posts')
   const maxpost = 20
   let samplers = []
   for(var i = 0;i< maxpost;i++){

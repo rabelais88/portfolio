@@ -11999,7 +11999,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.elPost[data-v-57a29a34] {\n  transition: 0.5s ease;\n  background-color: white;\n  margin: 10px;\n  width: calc( 33% - 20px - 60px);\n  max-height: 300px;\n  border-top: solid 2px #963232;\n  padding: 30px;\n}\n.elPost a[data-v-57a29a34] {\n    text-decoration: none;\n    color: black;\n    display: flex;\n    align-items: center;\n}\n.elPost[data-v-57a29a34]:hover {\n    background-color: #f0f0f0;\n    transition: 0.5s ease;\n}\n.elPost .photofy[data-v-57a29a34] {\n    background-size: cover;\n    background-position: center;\n    width: 80px;\n    height: 80px;\n    display: block;\n    border-radius: 5px;\n    flex-shrink: 0;\n}\n.elPost .textize[data-v-57a29a34] {\n    flex-shrink: 100;\n    margin-left: 20px;\n    flex-grow: 1;\n}\n.elPost p[data-v-57a29a34], .elPost h1[data-v-57a29a34] {\n    word-wrap: break-word;\n    word-break: break-all;\n}\n@media only screen and (max-width: 800px) {\n.elPost[data-v-57a29a34] {\n    max-width: 100%;\n    width: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.elPost[data-v-57a29a34] {\n  transition: 0.5s ease;\n  background-color: white;\n  width: calc( 33% - 60px);\n  max-height: 300px;\n  padding: 30px;\n  border-right: solid 2px black;\n}\n.elPost a[data-v-57a29a34] {\n    text-decoration: none;\n    color: black;\n    display: flex;\n    align-items: center;\n    word-wrap: break-word;\n    word-break: break-all;\n}\n.elPost[data-v-57a29a34]:hover {\n    background-color: #f0f0f0;\n    transition: 0.5s ease;\n}\n.elPost .photofy[data-v-57a29a34] {\n    background-size: cover;\n    background-position: center;\n    width: 80px;\n    height: 80px;\n    display: block;\n    border-radius: 5px;\n    flex-shrink: 0;\n}\n.elPost .textize[data-v-57a29a34] {\n    flex-shrink: 100;\n    margin-left: 20px;\n    flex-grow: 1;\n}\n.elPost b[data-v-57a29a34] {\n    font-size: 0.8rem;\n}\n@media only screen and (max-width: 800px) {\n.elPost[data-v-57a29a34] {\n    max-width: 100%;\n    width: 100%;\n    border-right: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -32696,7 +32696,7 @@ if (false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! D:\myproject\portfolio\src\main.js */"./src/main.js");
+module.exports = __webpack_require__(/*! F:\mycoding\portfolio\src\main.js */"./src/main.js");
 
 
 /***/ }),

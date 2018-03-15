@@ -19,16 +19,17 @@ export default{
 .elPost{
   transition:0.5s ease;
   background-color:white;
-  margin:10px;
-  width:calc( 33% - 20px - 60px );
+  width:calc( 33% - 60px );
   max-height:300px;
-  border-top:solid 2px rgb(150,50,50);
   padding:30px;
+  border-right:solid 2px black;
   a{
     text-decoration:none;
     color:black;
     display:flex;
     align-items:center;
+    word-wrap: break-word;
+    word-break:break-all;
   }
   &:hover{
     background-color:rgb(240,240,240);
@@ -48,9 +49,8 @@ export default{
     margin-left:20px;
     flex-grow:1;
   }
-  p,h1{
-    word-wrap: break-word;
-    word-break:break-all;
+  b{
+    font-size:0.8rem;
   }
 }
 
@@ -58,6 +58,7 @@ export default{
   .elPost{
     max-width:100%;
     width:100%;
+    border-right:none;
   }
 }
 </style>
