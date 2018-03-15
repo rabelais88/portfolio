@@ -60,7 +60,7 @@ export default {
 .navBar {
   padding:20px;
   transition:0.5s ease;
-  z-index:2;
+  z-index:10;
   width:100%;
   > a{
     text-decoration:none;

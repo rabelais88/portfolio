@@ -19,7 +19,7 @@ export default{
 .elPost{
   transition:0.5s ease;
   background-color:white;
-  width:calc( 33% - 60px );
+  width:calc( 33.1% - 60px );
   max-height:300px;
   padding:30px;
   border-right:solid 2px black;
@@ -43,10 +43,10 @@ export default{
     display:block;
     border-radius:5px;
     flex-shrink:0;
+    margin-right:20px;
   }
   .textize{
     flex-shrink: 100;
-    margin-left:20px;
     flex-grow:1;
   }
   b{

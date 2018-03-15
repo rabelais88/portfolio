@@ -55,6 +55,7 @@ export default {
   background-color:white;
   box-shadow:0 2px 2px rgba(0,0,0,0.4);
   transition:0.3s ease;
+  z-index:10;
 }
 
 .navBarAlt {

@@ -2159,6 +2159,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -11999,7 +12014,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.elPost[data-v-57a29a34] {\n  transition: 0.5s ease;\n  background-color: white;\n  width: calc( 33% - 60px);\n  max-height: 300px;\n  padding: 30px;\n  border-right: solid 2px black;\n}\n.elPost a[data-v-57a29a34] {\n    text-decoration: none;\n    color: black;\n    display: flex;\n    align-items: center;\n    word-wrap: break-word;\n    word-break: break-all;\n}\n.elPost[data-v-57a29a34]:hover {\n    background-color: #f0f0f0;\n    transition: 0.5s ease;\n}\n.elPost .photofy[data-v-57a29a34] {\n    background-size: cover;\n    background-position: center;\n    width: 80px;\n    height: 80px;\n    display: block;\n    border-radius: 5px;\n    flex-shrink: 0;\n}\n.elPost .textize[data-v-57a29a34] {\n    flex-shrink: 100;\n    margin-left: 20px;\n    flex-grow: 1;\n}\n.elPost b[data-v-57a29a34] {\n    font-size: 0.8rem;\n}\n@media only screen and (max-width: 800px) {\n.elPost[data-v-57a29a34] {\n    max-width: 100%;\n    width: 100%;\n    border-right: none;\n}\n}\n", ""]);
+exports.push([module.i, "\n.elPost[data-v-57a29a34] {\n  transition: 0.5s ease;\n  background-color: white;\n  width: calc( 33.1% - 60px);\n  max-height: 300px;\n  padding: 30px;\n  border-right: solid 2px black;\n}\n.elPost a[data-v-57a29a34] {\n    text-decoration: none;\n    color: black;\n    display: flex;\n    align-items: center;\n    word-wrap: break-word;\n    word-break: break-all;\n}\n.elPost[data-v-57a29a34]:hover {\n    background-color: #f0f0f0;\n    transition: 0.5s ease;\n}\n.elPost .photofy[data-v-57a29a34] {\n    background-size: cover;\n    background-position: center;\n    width: 80px;\n    height: 80px;\n    display: block;\n    border-radius: 5px;\n    flex-shrink: 0;\n    margin-right: 20px;\n}\n.elPost .textize[data-v-57a29a34] {\n    flex-shrink: 100;\n    flex-grow: 1;\n}\n.elPost b[data-v-57a29a34] {\n    font-size: 0.8rem;\n}\n@media only screen and (max-width: 800px) {\n.elPost[data-v-57a29a34] {\n    max-width: 100%;\n    width: 100%;\n    border-right: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -12018,7 +12033,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.navFixed[data-v-6353bcb6] {\n  position: fixed;\n  background-color: white;\n  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);\n  transition: 0.3s ease;\n}\n.navBarAlt[data-v-6353bcb6] {\n  padding: 20px;\n  transition: 0.3s ease;\n  width: 100%;\n}\n.navBarAlt > a[data-v-6353bcb6] {\n    text-decoration: none;\n    color: black;\n    transition: 0.2s;\n    position: relative;\n    margin: 10px;\n}\n.navBarAlt > a[data-v-6353bcb6]:after {\n      content: '';\n      position: absolute;\n      bottom: 0;\n      left: 0;\n      width: 0%;\n      border-bottom: 2px solid black;\n      transition: 0.4s;\n}\n.navBarAlt > a[data-v-6353bcb6]:hover:after {\n      width: 100%;\n}\n.navBarAlt span > a[data-v-6353bcb6] {\n    padding: 10px;\n    transition: 0.5s;\n}\n.navBarAlt span > a[data-v-6353bcb6]:hover {\n      opacity: 0.4;\n      transition: 0.5s;\n}\n", ""]);
+exports.push([module.i, "\n.navFixed[data-v-6353bcb6] {\n  position: fixed;\n  background-color: white;\n  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);\n  transition: 0.3s ease;\n  z-index: 10;\n}\n.navBarAlt[data-v-6353bcb6] {\n  padding: 20px;\n  transition: 0.3s ease;\n  width: 100%;\n}\n.navBarAlt > a[data-v-6353bcb6] {\n    text-decoration: none;\n    color: black;\n    transition: 0.2s;\n    position: relative;\n    margin: 10px;\n}\n.navBarAlt > a[data-v-6353bcb6]:after {\n      content: '';\n      position: absolute;\n      bottom: 0;\n      left: 0;\n      width: 0%;\n      border-bottom: 2px solid black;\n      transition: 0.4s;\n}\n.navBarAlt > a[data-v-6353bcb6]:hover:after {\n      width: 100%;\n}\n.navBarAlt span > a[data-v-6353bcb6] {\n    padding: 10px;\n    transition: 0.5s;\n}\n.navBarAlt span > a[data-v-6353bcb6]:hover {\n      opacity: 0.4;\n      transition: 0.5s;\n}\n", ""]);
 
 // exports
 
@@ -12037,7 +12052,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.navFixed[data-v-69aa95ec] {\n  position: fixed;\n  background-color: rgba(0, 0, 0, 0.8);\n  transition: 0.5s ease;\n}\n.navBar[data-v-69aa95ec] {\n  padding: 20px;\n  transition: 0.5s ease;\n  z-index: 2;\n  width: 100%;\n}\n.navBar > a[data-v-69aa95ec] {\n    text-decoration: none;\n    color: white;\n    transition: 0.2s;\n    position: relative;\n    margin: 20px;\n}\n.navBar > a[data-v-69aa95ec]:after {\n      content: '';\n      position: absolute;\n      bottom: 0;\n      left: 0;\n      width: 0%;\n      border-bottom: 2px solid white;\n      transition: 0.4s;\n}\n.navBar > a[data-v-69aa95ec]:hover:after {\n      width: 100%;\n}\n.navBar span > a[data-v-69aa95ec] {\n    padding: 10px;\n    transition: 0.5s;\n}\n.navBar span > a[data-v-69aa95ec]:hover {\n      opacity: 0.4;\n      transition: 0.5s;\n}\n", ""]);
+exports.push([module.i, "\n.navFixed[data-v-69aa95ec] {\n  position: fixed;\n  background-color: rgba(0, 0, 0, 0.8);\n  transition: 0.5s ease;\n}\n.navBar[data-v-69aa95ec] {\n  padding: 20px;\n  transition: 0.5s ease;\n  z-index: 10;\n  width: 100%;\n}\n.navBar > a[data-v-69aa95ec] {\n    text-decoration: none;\n    color: white;\n    transition: 0.2s;\n    position: relative;\n    margin: 20px;\n}\n.navBar > a[data-v-69aa95ec]:after {\n      content: '';\n      position: absolute;\n      bottom: 0;\n      left: 0;\n      width: 0%;\n      border-bottom: 2px solid white;\n      transition: 0.4s;\n}\n.navBar > a[data-v-69aa95ec]:hover:after {\n      width: 100%;\n}\n.navBar span > a[data-v-69aa95ec] {\n    padding: 10px;\n    transition: 0.5s;\n}\n.navBar span > a[data-v-69aa95ec]:hover {\n      opacity: 0.4;\n      transition: 0.5s;\n}\n", ""]);
 
 // exports
 
@@ -12094,7 +12109,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.title[data-v-e70aae28] {\n  text-align: center;\n}\n@media only screen and (max-width: 800px) {\n.contShowcase[data-v-e70aae28] {\n    width: 100%;\n}\n.contShowcase .tablet[data-v-e70aae28] {\n      width: 100%;\n}\n.contShowcase .tablet .disp[data-v-e70aae28] {\n        width: 100%;\n        height: 600px;\n        background-image: url(\"/dist/work_stellar.jpg\");\n        background-position: center;\n        background-size: contain;\n        background-repeat: no-repeat;\n}\n}\n@media only screen and (min-width: 800px) {\n#contShowcase[data-v-e70aae28] {\n    z-index: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 100%;\n}\n#contShowcase .tablet[data-v-e70aae28] {\n      box-sizing: border-box;\n      background-color: #44455a;\n      border: solid 1px #585a83;\n      border-radius: 3%;\n      width: 80%;\n      padding: 30px;\n}\n#contShowcase .tablet .disp[data-v-e70aae28] {\n        box-sizing: border-box;\n        width: 100%;\n        height: 768px;\n        background-color: #585a83;\n        background-image: url(\"/dist/work_stellar.jpg\");\n        background-position: center;\n        background-size: cover;\n}\n.mobile[data-v-e70aae28] {\n    position: relative;\n    z-index: 2;\n    float: right;\n    margin-top: -320px;\n    right: 30px;\n    width: 240px;\n    height: 400px;\n    background-color: #44455a;\n    border: solid 1px #585a83;\n    border-radius: 20px;\n    padding: 20px;\n    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.5);\n}\n.mobile .disp[data-v-e70aae28] {\n      box-sizing: border-box;\n      width: 100%;\n      height: 90%;\n      background-color: #585a83;\n}\n.mobile .btn[data-v-e70aae28] {\n      display: flex;\n      justify-content: center;\n}\n.mobile .btn > div[data-v-e70aae28] {\n        margin: 10px;\n        background-color: #585a83;\n        width: 35px;\n        height: 35px;\n        border-radius: 20px;\n}\n}\n", ""]);
 
 // exports
 
@@ -18175,11 +18190,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("navmenua"), _vm._v(" "), _c("h1", [_vm._v("this is work page")])],
+    [
+      _c("navmenua"),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2)
+    ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "title" }, [
+      _c("h1", [_vm._v("this is work page")]),
+      _vm._v(" "),
+      _c("h1", [_vm._v("stellar marina")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contShowcase" }, [
+      _c("div", { staticClass: "tablet" }, [
+        _c("div", { staticClass: "disp" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mobile" }, [
+      _c("div", { staticClass: "disp" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "btn" }, [_c("div")])
+    ])
+  }
+]
 render._withStripped = true
 
 if (false) {}
@@ -32696,7 +32752,7 @@ if (false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! F:\mycoding\portfolio\src\main.js */"./src/main.js");
+module.exports = __webpack_require__(/*! f:\mycoding\portfolio\src\main.js */"./src/main.js");
 
 
 /***/ }),
