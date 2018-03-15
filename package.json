@@ -38,6 +38,7 @@
     "cheerio-httpcli": "^0.7.2",
     "express": "^4.16.2",
     "fb": "^2.0.0",
+    "instagram-node": "^0.5.8",
     "vue-scroll-reveal": "^1.0.6"
   }
 }

@@ -1,13 +1,14 @@
 <template>
   <div>
     <navmenua></navmenua>
-
-    <div class="title">
-      <h1>Recent posts</h1>
-      <p>on</p>
-      <h2>social media</h2>
-      <div class="vthr"><div class="l"></div><div></div></div>
-    </div>
+    <transition name="fadeup" appear>
+      <div class="title">
+        <h1>Recent posts</h1>
+        <p>on</p>
+        <h2>social media</h2>
+        <div class="vthr"><div class="l"></div><div></div></div>
+      </div>
+    </transition>
     <div id="contPosts">
       <postviewer v-for="(elPost, index) in posts" :key="index" :postdata="elPost">
       </postviewer>

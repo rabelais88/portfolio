@@ -47,45 +47,45 @@
       </carousel>
       </div>
       <div class="spacer"></div>
-      <h1>Who Am I</h1>
+      <img src="/dist/engine.jpg" />
+      <h2>Engine behind the wheel</h2>
       <hr />
+      <p>
+        This portfolio runs on <b>Linux(CentOS 7) VPS,</b><br/><br/>
+        Created with <b>Node.js + Vue + Webpack(Babel) + SASS</b><br/><br/>
+        Some text datas are fetched from <b>PostgreSQL DB</b><br/><br />
+        but most importantly, made with ♥<br/><br/>
+      </p>
+      <router-link to="/contact" tag="a">CONTACT ME</router-link>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 import { Carousel, Slide } from 'vue-carousel'
 export default {
   data: () => {
     return {
-      location:'Incheon, South Korea',
-      languages:[['English','Advanced'],['Korean','Native'],['French','DELF B1'],['Chinese','HSK B1'],['Japanese','JLPT N2'],['Spanish','Intermediate']],
-      programs:[
-        ['Node.js', '/dist/logo_node.png'],
-        ['React.js','/dist/logo_react.png'],
-        ['Vue.js','/dist/logo_vue.png'],
-        ['Webpack','/dist/logo_webpack.jpg'],
-        ['Babel','/dist/logo_babel.png'],
-        ['Express.js','/dist/logo_express.png'],
-        ['Linux(CentOS)','/dist/logo_centos.png'],
-        ['PostgreSQL','/dist/logo_postgresql.png'],
-        ['MySQL','/dist/logo_mysql.png'],
-        ['Python','/dist/logo_python.png'],
-        ['MongoDB','/dist/logo_mongodb.png'],
-        ['JQuery','/dist/logo_jquery.png'],
-        ['SASS','/dist/logo_sass.png'],
-        ['Yarn','/dist/logo_yarn.png'],
-        ['Adobe Photoshop','/dist/logo_photoshop.png'],
-        ['Adobe Illustrator','/dist/logo_illustrator.png'],
-        ['Adobe After Effects','/dist/logo_aftereffects.png'],
-        ['Phantom.js',''],
-        ['Casper.js','']
-      ]
+      location:'',
+      languages:[],
+      programs:[]
     }
   },
   components:{
     Carousel,
     Slide
+  },
+  mounted(){
+    Vue.axios.get('/jsonindex').then((res)=>{
+      console.log(res)
+      this.location = res.data.location
+      this.languages = res.data.languages
+      this.programs = res.data.programs
+    })
   }
 }
 </script>
@@ -159,6 +159,25 @@ export default {
   }
   p{
     margin:20px;
+  }
+  img{
+    max-width:80%;
+    object-fit:cover;
+    margin:20px;
+  }
+  a{
+    padding:10px;
+    border-radius:2px;
+    border:solid 1px black;
+    text-decoration:none;
+    color:black;
+    transition:.5s;
+    font-weight: bold;
+    &:hover{
+      background-color:black;
+      color:white;
+      transition:.5s;
+    }
   }
 }
 

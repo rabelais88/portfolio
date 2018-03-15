@@ -6,6 +6,9 @@ const http = require('http').Server(app)
 
 const cheerio = require('cheerio-httpcli')
 const FB = require('fb')
+const ig = require('instagram-node').instagram()
+
+
 let settings = ''
 try{
   settings = require('./settings')
@@ -16,6 +19,8 @@ try{
     settings = require('./settings')
   })
 }
+
+ig.use({access_token:settings.apikeys.instagram})
 
 http.listen(process.env.PORT || 3000, function(){
   console.log("server is up at " + this.address().port)
@@ -32,6 +37,10 @@ app.get('/',(req,res)=>{
   })
 })
 
+app.get('/jsonindex',(req,res)=>{
+  res.json(settings.infoMain)
+})
+
 app.get('/articles',(req,res)=>{
   res.redirect('/')
 })
@@ -42,6 +51,10 @@ app.get('/works',(req,res)=>{
 
 app.get('/contact',(req,res)=>{
   res.redirect('/')
+})
+
+app.get('/jsonworks',(req,res)=>{
+  res.json(settings.infoWorks)
 })
 
 app.get('/jsonarticles',(req,res)=>{
@@ -73,6 +86,31 @@ function fetchTwitter(){
         allTwitters[target].href = settings.apikeys.twitter
       })
       resolve({type:'twitter',datas:allTwitters})
+    })
+  })
+}
+
+function fetchInstagram(){
+  return new Promise((resolve,reject)=>{
+    let allInstagrams = []
+    ig.user_media_recent(settings.apikeys.instagramId,[settings.igMaxRequest],(err,medias,pagination,remaining,limit)=>{
+      medias.map((elMedia)=>{
+        allInstagrams.push(Object.assign({},postTemplate))
+        const target = allInstagrams.length - 1
+        allInstagrams[target].type = 'instagram'
+
+        if(elMedia.caption.text){
+          if(elMedia.caption.text.length > 100){
+            allInstagrams[target].content = elMedia.caption.text.substring(0,settings.maxString) + '...'
+          }else{
+            allInstagrams[target].content = elMedia.caption.text
+          }
+        }
+        allInstagrams[target].photo = elMedia.images.thumbnail.url
+        allInstagrams[target].href = elMedia.link
+      })
+      console.log('remaining instagram API calls ... ', remaining)
+      resolve({type:'instagram',datas:allInstagrams})
     })
   })
 }
@@ -111,6 +149,8 @@ function fetchFBelement(elFeed){
   })
 }
 
+
+
 const samplePosts =
 [
   {type:'facebook',
@@ -127,38 +167,41 @@ const samplePosts =
   photo:'',date:'',href:'/'}
 ]
 
-if(settings.enableScrape === true){
-  console.log('post scrape mode: real scrape')
-  Promise.all([
-    fetchTwitter(),
-    fetchFacebook()
-  ]).then((res)=>{
-    let secondaryPromise = []
-    if(res[1].datas){
+function fetchAll(){
+  if(settings.enableScrape === true){
+    console.log('post scrape mode: real posts\n!! warning - this may use out the API call limit !!')
+    Promise.all([
+      fetchTwitter(), // res 0
+      fetchFacebook(), // res 1
+      fetchInstagram() // res 2
+    ]).then((res)=>{
+      let secondaryPromise = []
+      if(res[1].datas){
 
-      res[1].datas.map((elFeed,index)=>{
-        if(index <= settings.fbMaxRequest){
-          secondaryPromise.push(fetchFBelement(elFeed))
-        }
-      })
-      Promise.all(secondaryPromise).then((FBres)=>{
-        preservePosts(FBres.concat(res[0].datas))
-      })
-    }else{
-      //if there is no FB posts...
-      preservePosts(res[0].datas)
+        res[1].datas.map((elFeed,index)=>{
+          if(index <= settings.fbMaxRequest){
+            secondaryPromise.push(fetchFBelement(elFeed))
+          }
+        })
+        Promise.all(secondaryPromise).then((FBres)=>{
+          preservePosts(FBres.concat(res[0].datas,res[2].datas))
+        })
+      }else{
+        //if there is no FB posts...
+        preservePosts(res[0].datas.concat(res[2].datas))
+      }
+    })
+  }else{
+    //a sample post for testing
+    console.log('post scrape mode: sample posts')
+    const maxpost = 20
+    let samplers = []
+    for(var i = 0;i< maxpost;i++){
+      const rnd = Math.round(Math.random(samplePosts.length - 1))
+      samplers.push(samplePosts[rnd])
     }
-  })
-}else{
-  //a sample post for testing
-  console.log('post scrape mode: sample posts')
-  const maxpost = 20
-  let samplers = []
-  for(var i = 0;i< maxpost;i++){
-    const rnd = Math.round(Math.random(samplePosts.length - 1))
-    samplers.push(samplePosts[rnd])
+    preservePosts(samplers)
   }
-  preservePosts(samplers)
 }
 
 
@@ -168,4 +211,7 @@ function preservePosts(data){
   allPosts = data
 }
 
-
+fetchAll()
+setInterval(()=>{
+  fetchAll()
+},1000*60*60*3) //every three hours
