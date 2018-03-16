@@ -5,6 +5,10 @@ module.exports = {
     instagram:'',
     instagramId:'4101873'
   },
+  gmailauth:{
+    user:'',
+    pass:''
+  },
   maxString:120,
   enableScrape:false,
   fbMaxRequest:20,
@@ -27,15 +31,28 @@ module.exports = {
       ['JQuery','/dist/logo_jquery.png'],
       ['SASS','/dist/logo_sass.png'],
       ['Yarn','/dist/logo_yarn.png'],
+      ['Phantom.js','/dist/logo_phantomjs.png'],
+      ['Casper.js','/dist/logo_casperjs.png'],
       ['Adobe Photoshop','/dist/logo_photoshop.png'],
       ['Adobe Illustrator','/dist/logo_illustrator.png'],
       ['Adobe After Effects','/dist/logo_aftereffects.png'],
-      ['Phantom.js',''],
-      ['Casper.js','']
     ]
   },
   infoWorks:[
-    {year:'2018',title:'Stellar Marina Hotel',photo:'/dist/work_stellar.jpg',content:'my first commercial hotel site project.', href:'/'},
-    {year:'2018',title:'How things are done',photo:'/dist/work_stellar.jpg',content:'dfjkdjfkdfjkdfjkdfjkdfjkdfjk', href:'/'}
+    {year:'2018',title:'Stellar Marina Hotel',photo:'/dist/work_stellar.jpg',
+    content:'My first commercial hotel site project.\nPostgreSQL + React(Admin Page) + JQuery + Node.js\npromotion management and reservation are fully implemented.\nlightweight, minimalistic design',
+    href:'/'},
+    {year:'2018',title:'Korean Buzzword Crawler',photo:'/dist/work_stellar.jpg',
+    content:'The app lists popular buzzwords among big Korean communities,\nranks them according to its usage rate.', href:'/'},
+    {year:'2017',title:'Infographic series 1',photo:'/dist/work_stellar.jpg',
+    content:'Photoshop + Illustrator, inforgraphic on English', href:'/'},
+    {year:'2017',title:'Infographic series 2',photo:'/dist/work_stellar.jpg',
+    content:'Photoshop + Illustrator, inforgraphic on the planet Saturn', href:'/'},
+    {year:'2017',title:'Infographic series 3',photo:'/dist/work_stellar.jpg',
+    content:'Photoshop + Illustrator, inforgraphic on human evoluation', href:'/'},
+    {year:'2017',title:'Logo designs',photo:'/dist/work_stellar.jpg',
+    content:'Logo designs for an accessory brand', href:'/'},
+    {year:'2017',title:'Marketing designs',photo:'/dist/work_stellar.jpg',
+    content:'Marketing pitch designs for an accessory brand', href:'/'}
   ]
 }

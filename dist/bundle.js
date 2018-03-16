@@ -1807,6 +1807,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_axios__WEBPACK_IMPORTED_MODU
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -1824,6 +1829,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data() {
     return {
@@ -1835,7 +1843,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit() {
-      alert(this.name);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/contact', {
+        body: {
+          name: this.name,
+          place: this.place,
+          business: this.business,
+          contact: this.contact
+        }
+      }).then(res => {}).catch(e => {
+        console.log(e);
+      });
     }
   }
 });
@@ -1916,6 +1933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
 //
 //
 //
@@ -12109,7 +12128,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.backdrop[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n}\n.backdrop h1[data-v-1a4d8e3c], .backdrop h2[data-v-1a4d8e3c], .backdrop p[data-v-1a4d8e3c] {\n    color: white;\n    text-shadow: 0 2px 2px black;\n}\n.backdrop h1[data-v-1a4d8e3c] {\n    font-size: 5rem;\n}\n.backdrop h2[data-v-1a4d8e3c] {\n    font-size: 3rem;\n    font-weight: 500;\n}\n.backdrop hr[data-v-1a4d8e3c] {\n    width: 100px;\n    border-top: none;\n    border-bottom: solid 1px white;\n    padding-top: 20px;\n    margin-bottom: 20px;\n}\n.videodrop[data-v-1a4d8e3c] {\n  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);\n}\n.clicker[data-v-1a4d8e3c] {\n  transition: 0.5s;\n  padding: 10px;\n}\n.clicker[data-v-1a4d8e3c]:hover {\n  opacity: 0.4;\n  transition: 0.5s;\n}\n.margin40px[data-v-1a4d8e3c] {\n  margin: 40px;\n}\n#about[data-v-1a4d8e3c] {\n  padding-top: 100px;\n  text-align: center;\n}\n#about h1[data-v-1a4d8e3c] {\n    font-size: 5rem;\n}\n#about hr[data-v-1a4d8e3c] {\n    margin-top: 20px;\n    margin-bottom: 20px;\n    margin-left: calc(50% - 15px);\n    margin-right: calc(50% - 15px);\n    border-top: solid 1px black;\n    border-bottom: solid 1px black;\n}\n#about p[data-v-1a4d8e3c] {\n    margin: 20px;\n}\n#about img[data-v-1a4d8e3c] {\n    max-width: 80%;\n    object-fit: cover;\n    margin: 20px;\n}\n#about a[data-v-1a4d8e3c] {\n    padding: 10px;\n    border-radius: 2px;\n    border: solid 1px black;\n    text-decoration: none;\n    color: black;\n    transition: .5s;\n    font-weight: bold;\n}\n#about a[data-v-1a4d8e3c]:hover {\n      background-color: black;\n      color: white;\n      transition: .5s;\n}\n.badgeLang[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n.badgeLang > div[data-v-1a4d8e3c] {\n    background-color: black;\n    color: white;\n    min-width: 130px;\n    min-height: 130px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    border-radius: 150px;\n    margin: 20px;\n}\n.badgeTool[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  min-width: 150px;\n  min-height: 150px;\n}\n.badgeTool img[data-v-1a4d8e3c] {\n    margin-bottom: 10px;\n    object-fit: cover;\n    max-width: 100px;\n    max-height: 100px;\n}\n.spacer[data-v-1a4d8e3c] {\n  background-color: transparent;\n  height: 200px;\n}\n@media only screen and (max-width: 800px) {\n.backdrop h1[data-v-1a4d8e3c] {\n    font-size: 3rem;\n}\n.marginer[data-v-1a4d8e3c] {\n    margin: 30px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.backdrop[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n}\n.backdrop h1[data-v-1a4d8e3c], .backdrop h2[data-v-1a4d8e3c], .backdrop p[data-v-1a4d8e3c] {\n    color: white;\n    text-shadow: 0 2px 2px black;\n}\n.backdrop h1[data-v-1a4d8e3c] {\n    font-size: 5rem;\n}\n.backdrop h2[data-v-1a4d8e3c] {\n    font-size: 3rem;\n    font-weight: 500;\n}\n.backdrop hr[data-v-1a4d8e3c] {\n    width: 100px;\n    border-top: none;\n    border-bottom: solid 1px white;\n    padding-top: 20px;\n    margin-bottom: 20px;\n}\n.videodrop[data-v-1a4d8e3c] {\n  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);\n}\n.clicker[data-v-1a4d8e3c] {\n  transition: 0.5s;\n  padding: 10px;\n}\n.clicker[data-v-1a4d8e3c]:hover {\n  opacity: 0.4;\n  transition: 0.5s;\n}\n.margin40px[data-v-1a4d8e3c] {\n  margin: 40px;\n}\n#about[data-v-1a4d8e3c] {\n  padding-top: 100px;\n  text-align: center;\n}\n#about h1[data-v-1a4d8e3c] {\n    font-size: 5rem;\n}\n#about hr[data-v-1a4d8e3c] {\n    margin-top: 20px;\n    margin-bottom: 20px;\n    margin-left: calc(50% - 15px);\n    margin-right: calc(50% - 15px);\n    border-top: solid 1px black;\n    border-bottom: solid 1px black;\n}\n#about p[data-v-1a4d8e3c] {\n    margin: 20px;\n}\n#about img[data-v-1a4d8e3c] {\n    max-width: 80%;\n    object-fit: cover;\n    margin: 20px;\n}\n#about a[data-v-1a4d8e3c] {\n    margin-top: 30px;\n    display: inline-block;\n    padding: 10px;\n    border-radius: 2px;\n    border: solid 1px black;\n    text-decoration: none;\n    color: black;\n    transition: .5s;\n    font-weight: bold;\n}\n#about a[data-v-1a4d8e3c]:hover {\n      background-color: black;\n      color: white;\n      transition: .5s;\n}\n.badgeLang[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n.badgeLang > div[data-v-1a4d8e3c] {\n    background-color: black;\n    color: white;\n    min-width: 130px;\n    min-height: 130px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    border-radius: 150px;\n    margin: 20px;\n}\n.badgeTool[data-v-1a4d8e3c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  min-width: 150px;\n  min-height: 150px;\n}\n.badgeTool img[data-v-1a4d8e3c] {\n    margin-bottom: 10px;\n    object-fit: cover;\n    max-width: 100px;\n    max-height: 100px;\n}\n.spacer[data-v-1a4d8e3c] {\n  background-color: transparent;\n  height: 200px;\n}\n@media only screen and (max-width: 800px) {\n.backdrop h1[data-v-1a4d8e3c] {\n    font-size: 3rem;\n}\n.marginer[data-v-1a4d8e3c] {\n    margin: 30px;\n}\n}\n", ""]);
 
 // exports
 
@@ -12204,7 +12223,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "\n.frmContact[data-v-a318f3ec] {\n  font-size: 2rem;\n  margin: 10%;\n}\n.frmContact textarea[data-v-a318f3ec], .frmContact input[data-v-a318f3ec], .frmContact button[data-v-a318f3ec] {\n    outline: none;\n}\n.frmContact input[data-v-a318f3ec] {\n    margin: 10px;\n    font-size: 2rem;\n    border-top: none;\n    border-left: none;\n    border-right: none;\n    border-bottom: solid 1px rgba(0, 0, 0, 0.4);\n    transition: .5s;\n    max-width: 100%;\n    box-sizing: content-box;\n}\n.frmContact input[data-v-a318f3ec]:focus {\n      background-color: rgba(0, 0, 0, 0.2);\n      border-bottom: solid 1px black;\n      transition: .5s;\n}\n.frmContact .contButton[data-v-a318f3ec] {\n    display: flex;\n    width: 100%;\n    margin: 20px;\n    justify-content: center;\n}\n.frmContact .contButton button[data-v-a318f3ec] {\n      background-color: transparent;\n      border: solid 1px black;\n      transition: .5s;\n      border-radius: 2px;\n      font-size: 3rem;\n      color: black;\n}\n.frmContact .contButton button[data-v-a318f3ec]:hover {\n        background-color: black;\n        color: white;\n}\n", ""]);
+exports.push([module.i, "\n.frmContact[data-v-a318f3ec] {\n  font-size: 2rem;\n  margin: 10%;\n  text-align: center;\n}\n.frmContact textarea[data-v-a318f3ec], .frmContact input[data-v-a318f3ec], .frmContact button[data-v-a318f3ec] {\n    outline: none;\n}\n.frmContact input[data-v-a318f3ec] {\n    margin: 10px;\n    font-size: 2rem;\n    border-top: none;\n    border-left: none;\n    border-right: none;\n    border-bottom: solid 1px rgba(0, 0, 0, 0.3);\n    transition: .5s;\n    max-width: 100%;\n    box-sizing: content-box;\n}\n.frmContact input[data-v-a318f3ec]:focus {\n      background-color: rgba(0, 0, 0, 0.2);\n      border-bottom: solid 1px black;\n      transition: .5s;\n}\n.frmContact .contButton[data-v-a318f3ec] {\n    margin-top: 30px;\n    display: flex;\n    width: 100%;\n    justify-content: center;\n}\n.frmContact .contButton button[data-v-a318f3ec] {\n      background-color: transparent;\n      border: solid 1px black;\n      transition: .5s;\n      border-radius: 2px;\n      font-size: 3rem;\n      color: black;\n}\n.frmContact .contButton button[data-v-a318f3ec]:hover {\n        background-color: black;\n        color: white;\n}\n@media only screen and (max-width: 800px) {\n.frmContact[data-v-a318f3ec] {\n    font-size: 1.5rem;\n}\n.frmContact input[data-v-a318f3ec] {\n      font-size: 1.5rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -17880,10 +17899,8 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("p", [
-            _vm._v("I speak "),
-            _c("b", [_vm._v(_vm._s(_vm.languages.length))]),
-            _vm._v(" languages")
+          _c("h2", [
+            _vm._v("I speak " + _vm._s(_vm.languages.length) + " languages")
           ]),
           _vm._v(" "),
           _c(
@@ -17898,11 +17915,7 @@ var render = function() {
             })
           ),
           _vm._v(" "),
-          _c("p", [
-            _vm._v("I use "),
-            _c("b", [_vm._v(_vm._s(_vm.programs.length))]),
-            _vm._v(" tools")
-          ]),
+          _c("h2", [_vm._v("I use " + _vm._s(_vm.programs.length) + " tools")]),
           _vm._v(" "),
           _c(
             "div",
@@ -17933,11 +17946,27 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+          _c("router-link", { attrs: { to: "/works", tag: "a" } }, [
+            _vm._v("MY PORTFOLIO")
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "spacer" }),
           _vm._v(" "),
           _c("img", { attrs: { src: "/dist/engine.jpg" } }),
           _vm._v(" "),
-          _c("h2", [_vm._v("Engine behind the wheel")]),
+          _c(
+            "h2",
+            {
+              directives: [
+                {
+                  name: "scroll-reveal",
+                  rawName: "v-scroll-reveal.reset",
+                  modifiers: { reset: true }
+                }
+              ]
+            },
+            [_vm._v("Engine behind the wheel")]
+          ),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -17945,7 +17974,9 @@ var render = function() {
           _vm._v(" "),
           _c("router-link", { attrs: { to: "/contact", tag: "a" } }, [
             _vm._v("CONTACT ME")
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer" })
         ],
         1
       )
@@ -17960,7 +17991,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", [
       _vm._v("\n      This portfolio runs on "),
-      _c("b", [_vm._v("Linux(CentOS 7) VPS,")]),
+      _c("b", [_vm._v("Linux(CentOS 7) + nginx")]),
       _c("br"),
       _c("br"),
       _vm._v("\n      Created with "),
@@ -18394,7 +18425,7 @@ var render = function() {
         [
           _vm._v("\n    Hello,"),
           _c("br"),
-          _vm._v("\n    I am "),
+          _vm._v("\n    I am from "),
           _c("input", {
             directives: [
               {
@@ -18404,7 +18435,7 @@ var render = function() {
                 expression: "name"
               }
             ],
-            attrs: { placeholder: "Excellent Firm" },
+            attrs: { placeholder: "Excellent Firm/Studio" },
             domProps: { value: _vm.name },
             on: {
               input: function($event) {
@@ -18415,9 +18446,8 @@ var render = function() {
               }
             }
           }),
-          _vm._v(","),
           _c("br"),
-          _vm._v("\n    my office is at "),
+          _vm._v("\n    located at "),
           _c("input", {
             directives: [
               {
@@ -33121,7 +33151,7 @@ if (false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-module.exports = __webpack_require__(/*! D:\myproject\portfolio\src\main.js */"./src/main.js");
+module.exports = __webpack_require__(/*! F:\mycoding\portfolio\src\main.js */"./src/main.js");
 
 
 /***/ }),

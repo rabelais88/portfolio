@@ -7,7 +7,7 @@ const http = require('http').Server(app)
 const cheerio = require('cheerio-httpcli')
 const FB = require('fb')
 const ig = require('instagram-node').instagram()
-
+const nodemailer = require('nodemailer')
 
 let settings = ''
 try{
@@ -19,6 +19,17 @@ try{
     settings = require('./settings')
   })
 }
+
+const smtpTransport = nodemailer.createTransport({  
+  service: 'Gmail',
+  auth: {
+      user: settings.gmailauth.user,
+      pass: settings.gmailauth.pass
+  },
+  tls:{
+    rejectUnauthorized:false
+  }
+});
 
 ig.use({access_token:settings.apikeys.instagram})
 
@@ -59,6 +70,15 @@ app.get('/jsonworks',(req,res)=>{
 
 app.get('/jsonarticles',(req,res)=>{
   res.json(allPosts)
+})
+
+app.post('/contact',(req,res)=>{
+  async ()=>{
+    const mailres = await sendmail('sender<sender@gmail.com>','title','htmlcontent')
+    if(mailres === true){
+      res.status(200).json({result:true})
+    }
+  }
 })
 
 const postTemplate = {
@@ -209,6 +229,31 @@ function fetchAll(){
 function preservePosts(data){
   console.log(`${data.length} posts collected`)
   allPosts = data
+}
+
+function sendmail(sender,subject,htmlContent){
+  new Promise((resolve,reject)=>{
+    //const sender = '스텔라마리나 <stellarmarinahotel@gmail.com>'
+    //const subject = ' 예약요청(홈페이지)'
+    //let htmlContent = 'mail content'
+    
+    const mailOptions = {  
+      from: sender,
+      to: 'sungryeolp@gmail.com',
+      subject: subject,
+    
+      html: htmlContent
+    };
+    
+    smtpTransport.sendMail(mailOptions,(err,res) =>{
+      if (err){
+        console.log(err)
+        return reject(err)
+      }
+      smtpTransport.close()
+      return resolve(true)
+    })
+  })
 }
 
 fetchAll()

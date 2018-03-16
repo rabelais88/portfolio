@@ -39,6 +39,7 @@
     "express": "^4.16.2",
     "fb": "^2.0.0",
     "instagram-node": "^0.5.8",
+    "nodemailer": "^4.6.3",
     "vue-scroll-reveal": "^1.0.6"
   }
 }

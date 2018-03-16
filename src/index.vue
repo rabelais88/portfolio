@@ -28,14 +28,14 @@
       <p>I am a full stack web developer, web designer, translator<br/>
         who works in <b>{{location}}.</b></p>
       <br/>
-      <p>I speak <b>{{ languages.length }}</b> languages</p>
+      <h2>I speak {{ languages.length }} languages</h2>
       <div class="badgeLang margin40px">
         <div v-for="(elLang,index) in languages" :key="index">
           <div><b>{{elLang[0]}}</b></div>
           <div>{{elLang[1]}}</div>
         </div>
       </div>
-      <p>I use <b>{{ programs.length }}</b> tools</p>
+      <h2>I use {{ programs.length }} tools</h2>
       <div class="margin40px">
       <carousel :navigationEnabled="true" :autoplay="true" :perPage="3" :perPageCustom="[[768, 4]]">
         <slide v-for="(elProg, index) in programs" :key="index" >
@@ -46,17 +46,19 @@
         </slide>
       </carousel>
       </div>
+      <router-link to="/works" tag="a">MY PORTFOLIO</router-link>
       <div class="spacer"></div>
       <img src="/dist/engine.jpg" />
-      <h2>Engine behind the wheel</h2>
+      <h2 v-scroll-reveal.reset>Engine behind the wheel</h2>
       <hr />
       <p>
-        This portfolio runs on <b>Linux(CentOS 7) VPS,</b><br/><br/>
+        This portfolio runs on <b>Linux(CentOS 7) + nginx</b><br/><br/>
         Created with <b>Node.js + Vue + Webpack(Babel) + SASS</b><br/><br/>
         Some text datas are fetched from <b>PostgreSQL DB</b><br/><br />
         but most importantly, made with ♥<br/><br/>
       </p>
       <router-link to="/contact" tag="a">CONTACT ME</router-link>
+      <div class="spacer"></div>
     </div>
   </div>
 </template>
@@ -166,6 +168,8 @@ export default {
     margin:20px;
   }
   a{
+    margin-top:30px;
+    display:inline-block;
     padding:10px;
     border-radius:2px;
     border:solid 1px black;
