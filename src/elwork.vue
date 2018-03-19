@@ -39,6 +39,7 @@
 }
 
 .photofy{
+  box-shadow:0 0 3px rgba(0,0,0,0.6);
   overflow:hidden;
   width:100%;
   height:400px;
@@ -81,7 +82,7 @@
   .photofy{
     width:450px;
     height:100%;
-    box-shadow:0 0 3px rgba(0,0,0,0.6);
+
   }
 }
 </style>

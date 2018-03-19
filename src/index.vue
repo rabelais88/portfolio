@@ -52,9 +52,9 @@
       <h2 v-scroll-reveal.reset>Engine behind the wheel</h2>
       <hr />
       <p>
-        This portfolio runs on <b>Linux(CentOS 7) + nginx</b><br/><br/>
-        Created with <b>Node.js + Vue + Webpack(Babel) + SASS</b><br/><br/>
-        Some text datas are fetched from <b>PostgreSQL DB</b><br/><br />
+        This portfolio runs on<br/> <b>Linux(CentOS 7) + nginx</b><br/><br/>
+        Created with<br/> <b>Node.js + Vue + Webpack(Babel) + SASS</b><br/><br/>
+        Some text datas are fetched from<br/> <b>PostgreSQL DB</b><br/><br />
         but most importantly, made with ♥<br/><br/>
       </p>
       <router-link to="/contact" tag="a">CONTACT ME</router-link>

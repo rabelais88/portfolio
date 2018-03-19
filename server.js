@@ -7,7 +7,14 @@ const http = require('http').Server(app)
 const cheerio = require('cheerio-httpcli')
 const FB = require('fb')
 const ig = require('instagram-node').instagram()
+
 const nodemailer = require('nodemailer')
+const bodyParser = require('body-parser')
+
+const pgp = require('pg-promise')()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
 
 let settings = ''
 try{
@@ -19,6 +26,8 @@ try{
     settings = require('./settings')
   })
 }
+
+const db = pgp(settings.pgsqlauth)
 
 const smtpTransport = nodemailer.createTransport({  
   service: 'Gmail',
@@ -64,21 +73,47 @@ app.get('/contact',(req,res)=>{
   res.redirect('/')
 })
 
+function sendmail(sender,subject,htmlContent){
+  return new Promise((resolve,reject)=>{
+    const mailOptions = {  
+      from: sender,
+      to: settings.contactEmail,
+      subject: subject,
+    
+      html: htmlContent
+    };
+
+    smtpTransport.sendMail(mailOptions,(err,res) =>{
+      if (err){
+        console.log(err)
+        reject(err)
+      }
+      smtpTransport.close()
+      resolve(true)
+    })
+  })
+}
+
+async function asyncmailer(req,res) {
+  console.log(req.body)
+  let mailres = await sendmail(req.body.name + '<' + req.body.contact + '>', '!!portfolio contact - ' + req.body.name,req.body.business)
+  if(mailres === true){
+    res.status(200).json({result:true})
+    return true
+  }
+}
+
+app.post('/contact',(req,res)=>{
+  console.log('req.body content:', req.body)
+  return asyncmailer(req,res)
+})
+
 app.get('/jsonworks',(req,res)=>{
   res.json(settings.infoWorks)
 })
 
 app.get('/jsonarticles',(req,res)=>{
-  res.json(allPosts)
-})
-
-app.post('/contact',(req,res)=>{
-  async ()=>{
-    const mailres = await sendmail('sender<sender@gmail.com>','title','htmlcontent')
-    if(mailres === true){
-      res.status(200).json({result:true})
-    }
-  }
+  res.json(getPrefetched(req,res))
 })
 
 const postTemplate = {
@@ -227,33 +262,18 @@ function fetchAll(){
 
 
 function preservePosts(data){
-  console.log(`${data.length} posts collected`)
+  console.log(`${data.length} posts collected --- ${new Date()}`)
   allPosts = data
 }
 
-function sendmail(sender,subject,htmlContent){
-  new Promise((resolve,reject)=>{
-    //const sender = '스텔라마리나 <stellarmarinahotel@gmail.com>'
-    //const subject = ' 예약요청(홈페이지)'
-    //let htmlContent = 'mail content'
+function getPrefetched(){
+  db.none('CREATE TABLE IF NOT EXISTS posts\
+  (id INTEGER PRIMARY KEY,\
+    fetchedtime TIME WITH TIME ZONE,\
+    fetchedobj JSON);')
+  .then(()=>{
     
-    const mailOptions = {  
-      from: sender,
-      to: 'sungryeolp@gmail.com',
-      subject: subject,
-    
-      html: htmlContent
-    };
-    
-    smtpTransport.sendMail(mailOptions,(err,res) =>{
-      if (err){
-        console.log(err)
-        return reject(err)
-      }
-      smtpTransport.close()
-      return resolve(true)
-    })
-  })
+  }).catch((err)=>{ console.log (err) })
 }
 
 fetchAll()

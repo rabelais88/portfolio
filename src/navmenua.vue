@@ -85,7 +85,7 @@ export default {
   }
 
   span > a{
-    padding:10px;
+    padding:7px;
     transition:0.5s;
 
     &:hover{

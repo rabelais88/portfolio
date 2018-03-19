@@ -3,47 +3,55 @@
     <navmenua></navmenua>
     <form class="frmContact" @submit.prevent="submit">
       Hello,<br/>
-      I am from <input v-model="name" placeholder="Excellent Firm/Studio" /><br/>
-      located at <input v-model="place" placeholder="Gangnam, South Korea" /><br/>
-      I want to ask you about <input v-model="business" placeholder="business" /><br/>
-      You can reach me at<input v-model="contact" placeholder="abc@gmail.com" /><br/>
+      I am from <input v-model="name" placeholder="Excellent Firm/Studio" required/><br/>
+      located at <input v-model="place" placeholder="Gangnam, South Korea" required/><br/>
+      I want to ask you about <input v-model="business" placeholder="business" required/><br/>
+      You can reach me at<input v-model="contact" placeholder="abc@gmail.com" required/><br/>
       I am looking forward to your reply.<br />
       <div class="contButton">
         <button type="submit">OKAY!</button>
       </div>
     </form>
+    <modal v-if="showModal" @close="showModal=false">
+      <h3 slot="header">The mail has been sent successfully</h3>
+      <p slot="body">Thank you, I'll be back to you in no time!</p>
+    </modal>
   </div>
 </template>
 <script>
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import modal from './dialog.vue'
 export default {
   data(){
     return{
       name:'',
       place:'',
       business:'',
-      contact:''
+      contact:'',
+      showModal:false
     }
   },
   methods:{
     submit(){
       axios.post('/contact', {
-        body: {
           name:this.name,
           place:this.place,
           business:this.business,
           contact:this.contact
-        }
-      })
+        })
       .then(res => {
-
+        console.log(res)
+        this.showModal = true
       })
       .catch(e => {
         console.log(e)
       })
     }
+  },
+  components:{
+    modal:modal
   }
 }
 </script>
