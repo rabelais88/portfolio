@@ -268,7 +268,9 @@ function preservePosts(data){
       fetchedtime TIME WITH TIME ZONE,\
       fetchedobj JSON);')
       .then(()=>{
-        return tsk.none('INSERT INTO posts (id, fetchedtime, fetchedobj) VALUES ((SELECT MAX(id) FROM POSTS), CURRENT_TIME, $1)',data)
+        return tsk.one('SELECT MAX(id) FROM posts;')
+      }).then((maxId)=>{
+        return tsk.none('INSERT INTO posts (id, fetchedtime, fetchedobj) VALUES ($1, CURRENT_TIME, $2);', [maxId.max + 1, JSON.stringify(data)])
       })
   })
   .then(()=>{
@@ -286,18 +288,35 @@ function getPrefetched(res){
       fetchedtime TIME WITH TIME ZONE,\
       fetchedobj JSON);')
     .then(()=>{
-      return tsk.any('SELECT * FROM posts WHERE id = (SELECT MAX(id) FROM posts)')
+      return tsk.one('SELECT * FROM posts ORDER BY fetchedtime LIMIT 1;')
     })
   })
   .then(sqlData => {
-    res.json(sqlData)
+    //console.log('fetch data from sql ---',sqlData)
+    res.json(sqlData.fetchedobj)
   })
   .catch(err=>{
     console.log(err)
   })
 }
 
+function deleteOld(){
+  db.task(tsk => {
+    return tsk.one('SELECT MAX(id) FROM posts;')
+    .then(maxId=>{
+      return tsk.none('IF COUNT(*) > 10 THEN DELETE FROM posts WHERE id > $1 + ' + settings.dbMaxHistory +';',maxId.max)
+    })
+  })
+  .then(sqlData=>{
+    console.log('useless datas are removed')
+  })
+  .catch(err=>{
+    console.log(err)
+  })
+}
+
+// -------------------- periodically fetch data from X minutes
 fetchAll()
 setInterval(()=>{
   fetchAll()
-},1000*60*60*3) //every three hours
+},1000*60*settings.fetchIntervalMinute) //every three hours

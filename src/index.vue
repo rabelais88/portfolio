@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :show="isLoading" label="loading main screen..."></loading>
     <videoback :sources="['./dist/backdrop.mp4']" class="videodrop">
       <navmenu></navmenu>
       <div class="backdrop">
@@ -67,14 +68,15 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import loading from 'vue-full-loading'
 import { Carousel, Slide } from 'vue-carousel'
 export default {
   data: () => {
     return {
       location:'',
       languages:[],
-      programs:[]
+      programs:[],
+      isLoading:true
     }
   },
   components:{
@@ -87,6 +89,7 @@ export default {
       this.location = res.data.location
       this.languages = res.data.languages
       this.programs = res.data.programs
+      this.isLoading = false
     })
   }
 }

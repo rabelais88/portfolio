@@ -9,11 +9,20 @@ module.exports = {
     user:'',
     pass:''
   },
+  pgsqlauth:{
+    host:'localhost',
+    port:5432,
+    database:'',
+    user:'',
+    password:''
+  },
   contactEmail:'sungryeolp@gmail.com',
   maxString:120,
   enableScrape:false,
   fbMaxRequest:20,
   igMaxRequest:10,
+  dbMaxHistory:50,
+  fetchIntervalMinute:180,
   infoMain:{
     location:'Incheon, South Korea',
     languages:[['English','Advanced'],['Korean','Native'],['French','DELF B1'],['Chinese','HSK B1'],['Japanese','JLPT N2'],['Spanish','Intermediate']],

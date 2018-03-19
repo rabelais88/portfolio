@@ -16,6 +16,7 @@
       <h3 slot="header">The mail has been sent successfully</h3>
       <p slot="body">Thank you, I'll be back to you in no time!</p>
     </modal>
+    <loading :show="isLoading" label="sending the message..."></loading>
   </div>
 </template>
 <script>
@@ -23,6 +24,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import modal from './dialog.vue'
+import loading from 'vue-full-loading'
 export default {
   data(){
     return{
@@ -30,11 +32,13 @@ export default {
       place:'',
       business:'',
       contact:'',
-      showModal:false
+      showModal:false,
+      isLoading:false
     }
   },
   methods:{
     submit(){
+      this.isLoading = true
       axios.post('/contact', {
           name:this.name,
           place:this.place,
@@ -44,6 +48,7 @@ export default {
       .then(res => {
         console.log(res)
         this.showModal = true
+        this.isLoading = false
       })
       .catch(e => {
         console.log(e)
@@ -51,7 +56,8 @@ export default {
     }
   },
   components:{
-    modal:modal
+    modal:modal,
+    loading:loading
   }
 }
 </script>

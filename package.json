@@ -22,6 +22,7 @@
     "vue": "^2.5.15",
     "vue-axios": "^2.0.2",
     "vue-carousel": "^0.6.9",
+    "vue-full-loading": "^1.2.0",
     "vue-hot-reload-api": "^2.3.0",
     "vue-loader": "^14.2.1",
     "vue-router": "^3.0.1",
