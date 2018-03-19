@@ -49,8 +49,6 @@ http.listen(process.env.PORT || 3000, function(){
 
 app.use('/dist',express.static(__dirname + '/dist'))
 
-let allPosts = []
-
 app.get('/',(req,res)=>{
   fs.readFile('index.html','utf8',(err,data)=>{
     res.send(data)
@@ -113,7 +111,7 @@ app.get('/jsonworks',(req,res)=>{
 })
 
 app.get('/jsonarticles',(req,res)=>{
-  res.json(getPrefetched(req,res))
+  getPrefetched(res)
 })
 
 const postTemplate = {
@@ -262,18 +260,41 @@ function fetchAll(){
 
 
 function preservePosts(data){
+  //data must be a perfect json
   console.log(`${data.length} posts collected --- ${new Date()}`)
-  allPosts = data
+  db.task(tsk => {
+    return tsk.none('CREATE TABLE IF NOT EXISTS posts\
+    (id INTEGER PRIMARY KEY,\
+      fetchedtime TIME WITH TIME ZONE,\
+      fetchedobj JSON);')
+      .then(()=>{
+        return tsk.none('INSERT INTO posts (id, fetchedtime, fetchedobj) VALUES ((SELECT MAX(id) FROM POSTS), CURRENT_TIME, $1)',data)
+      })
+  })
+  .then(()=>{
+    console.log(`posts successfully saved --- ${new Date()}`)
+  })
+  .catch(err=>{
+    console.log(err)
+  })
 }
 
-function getPrefetched(){
-  db.none('CREATE TABLE IF NOT EXISTS posts\
-  (id INTEGER PRIMARY KEY,\
-    fetchedtime TIME WITH TIME ZONE,\
-    fetchedobj JSON);')
-  .then(()=>{
-    
-  }).catch((err)=>{ console.log (err) })
+function getPrefetched(res){
+  db.task(tsk => {
+    return tsk.none('CREATE TABLE IF NOT EXISTS posts\
+    (id INTEGER PRIMARY KEY,\
+      fetchedtime TIME WITH TIME ZONE,\
+      fetchedobj JSON);')
+    .then(()=>{
+      return tsk.any('SELECT * FROM posts WHERE id = (SELECT MAX(id) FROM posts)')
+    })
+  })
+  .then(sqlData => {
+    res.json(sqlData)
+  })
+  .catch(err=>{
+    console.log(err)
+  })
 }
 
 fetchAll()
