@@ -275,6 +275,7 @@ function preservePosts(data){
   })
   .then(()=>{
     console.log(`posts successfully saved --- ${new Date()}`)
+    deleteOld()
   })
   .catch(err=>{
     console.log(err)
@@ -301,12 +302,7 @@ function getPrefetched(res){
 }
 
 function deleteOld(){
-  db.task(tsk => {
-    return tsk.one('SELECT MAX(id) FROM posts;')
-    .then(maxId=>{
-      return tsk.none('IF COUNT(*) > 10 THEN DELETE FROM posts WHERE id > $1 + ' + settings.dbMaxHistory +';',maxId.max)
-    })
-  })
+  db.none('DELETE FROM posts WHERE id < (SELECT MAX(id) FROM posts) - $1;', [settings.dbMaxHistory])
   .then(sqlData=>{
     console.log('useless datas are removed')
   })
@@ -316,7 +312,12 @@ function deleteOld(){
 }
 
 // -------------------- periodically fetch data from X minutes
+
 fetchAll()
+let fetchtime = 360
+if(settings.fetchIntervalMinute){
+  fetchtime = settings.fetchIntervalMinute
+}
 setInterval(()=>{
   fetchAll()
-},1000*60*settings.fetchIntervalMinute) //every three hours
+},1000*60*fetchtime) //every three hours

@@ -26,12 +26,14 @@ import postviewer from './element.vue'
 import works from './works.vue'
 import contact from './contact.vue'
 import workviewer from './elwork.vue'
+import searcher from './searcher.vue'
 
 Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
 Vue.component('navmenua',navmenua)
 Vue.component('postviewer',postviewer)
 Vue.component('workviewer',workviewer)
+Vue.component('searcher',searcher)
 
 
 const routes = [
@@ -63,7 +65,8 @@ new Vue({
     postviewer:postviewer,
     works:works,
     contact:contact,
-    workviewer:workviewer
+    workviewer:workviewer,
+    searcher:searcher
   },
   router: router
 })

@@ -21,7 +21,8 @@ import VueAxios from 'vue-axios'
 export default {
   data(){
     return {
-      works:[]
+      works:[],
+      query:''
     }
   },
   mounted(){

@@ -9,8 +9,9 @@
         <div class="vthr"><div class="l"></div><div></div></div>
       </div>
     </transition>
+    <searcher sample="keyword" @search="filterPost"></searcher>
     <div id="contPosts">
-      <postviewer v-for="(elPost, index) in posts" :key="index" :postdata="elPost">
+      <postviewer v-for="(elPost, index) in filteredPosts" :key="index" :postdata="elPost">
       </postviewer>
     </div>
   </div>
@@ -25,7 +26,8 @@ Vue.use(VueAxios,axios)
 export default {
   data(){
     return{
-      posts:[]
+      posts:[],
+      query:''
     }
   },
   mounted(){
@@ -33,6 +35,19 @@ export default {
       console.log(res)
       this.posts = res.data
     })
+  },
+  methods:{
+    filterPost(targetQuery){
+      this.query = targetQuery
+    }
+  },
+  computed:{
+    filteredPosts(){
+      return this.posts.filter(elPost=>{
+        const qry = this.query.toLowerCase()
+        return elPost.type.toLowerCase().includes(qry) || elPost.content.toLowerCase().includes(qry)
+      })
+    }
   }
 }
 </script>

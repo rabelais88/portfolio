@@ -1,6 +1,5 @@
 <template>
   <div>
-    <loading :show="isLoading" label="loading main screen..."></loading>
     <videoback :sources="['./dist/backdrop.mp4']" class="videodrop">
       <navmenu></navmenu>
       <div class="backdrop">
@@ -22,6 +21,7 @@
         </a>
       </div>
     </videoback>
+    <loading :show="isLoading" label="loading main screen..."></loading>
     <div id="about">
       <h1 v-scroll-reveal.reset>Hello,</h1>
       <h2 v-scroll-reveal.reset>안녕하세요,</h2>
@@ -38,7 +38,7 @@
       </div>
       <h2>I use {{ programs.length }} tools</h2>
       <div class="margin40px">
-      <carousel :navigationEnabled="true" :autoplay="true" :perPage="3" :perPageCustom="[[768, 4]]">
+      <carousel :navigationEnabled="true" :perPage="3" :perPageCustom="[[768, 4]]">
         <slide v-for="(elProg, index) in programs" :key="index" >
           <div class="badgeTool">
             <img v-if="elProg[1]" :src="elProg[1]"/>
@@ -47,6 +47,13 @@
         </slide>
       </carousel>
       </div>
+      <div class="spacer"></div>
+      <label for="search"><b>Try search among my skillsets!</b></label>
+      <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
+      <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
+      <p>
+        Specific skill name or keywords
+      </p>
       <router-link to="/works" tag="a">MY PORTFOLIO</router-link>
       <div class="spacer"></div>
       <img src="/dist/engine.jpg" />
@@ -70,18 +77,21 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import loading from 'vue-full-loading'
 import { Carousel, Slide } from 'vue-carousel'
+
 export default {
-  data: () => {
+  data(){
     return {
       location:'',
       languages:[],
       programs:[],
-      isLoading:true
+      isLoading:true,
+      querySkill:''
     }
   },
   components:{
     Carousel,
-    Slide
+    Slide,
+    loading
   },
   mounted(){
     Vue.axios.get('/jsonindex').then((res)=>{
@@ -91,6 +101,27 @@ export default {
       this.programs = res.data.programs
       this.isLoading = false
     })
+  },
+  methods:{
+    skillSearch(query){
+      this.querySkill = query
+    }
+  },
+  computed:{
+    filteredSkills(){
+      if(this.querySkill){
+        return [...this.languages,...this.programs].filter(elSkill=>{
+          let subCondition = false
+          const query = this.querySkill.toLowerCase()
+          if(elSkill.length >= 3){
+            subCondition = elSkill[2].toLowerCase().includes(query)
+          }
+          return elSkill[0].toLowerCase().includes(query) || subCondition
+        })
+      }else{
+        return []
+      }
+    }
   }
 }
 </script>
