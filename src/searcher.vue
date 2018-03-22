@@ -35,6 +35,7 @@ export default {
     font-size:1.2rem;
     text-align:center;
     border-bottom:solid 1px rgba(0,0,0,0.4);
+    background-color:transparent;
     transition:.5s;
     &:focus{
       transition:.5s;

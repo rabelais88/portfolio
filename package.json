@@ -42,6 +42,7 @@
     "instagram-node": "^0.5.8",
     "nodemailer": "^4.6.3",
     "pg-promise": "^8.2.2",
+    "vue-directive-tooltip": "^1.4.4",
     "vue-scroll-reveal": "^1.0.6"
   }
 }

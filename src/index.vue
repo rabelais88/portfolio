@@ -1,6 +1,6 @@
 <template>
   <div>
-    <videoback :sources="['./dist/backdrop.mp4']" class="videodrop">
+    <videoback :sources="['./dist/backdrop.mp4']" img="/dist/backdrop.jpg" class="videodrop">
       <navmenu></navmenu>
       <div class="backdrop">
         <p>work & portfolio</p>
@@ -47,15 +47,15 @@
         </slide>
       </carousel>
       </div>
-      <div class="spacer"></div>
-      <label for="search"><b>Try search among my skillsets!</b></label>
-      <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
-      <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
-      <p>
-        Specific skill name or keywords
-      </p>
-      <router-link to="/works" tag="a">MY PORTFOLIO</router-link>
-      <div class="spacer"></div>
+      <div class="contSkill">
+        <label for="search"><b>Try search among my skillsets!</b></label>
+        <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
+        <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
+        <p>
+          Specific skill name or keywords
+        </p>
+        <router-link to="/works" tag="a">MY PORTFOLIO</router-link>
+      </div>
       <img src="/dist/engine.jpg" />
       <h2 v-scroll-reveal.reset>Engine behind the wheel</h2>
       <hr />
@@ -257,6 +257,15 @@ export default {
 .spacer{
   background-color:transparent;
   height:200px;
+}
+
+.contSkill{
+  clear:both;
+  display:block;
+  margin-top:100px;
+  margin-bottom:50px;
+  background-color:rgb(224, 224, 224);
+  padding:40px;
 }
 
 @media only screen and (max-width: 800px) {

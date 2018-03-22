@@ -7,9 +7,22 @@
         <p>Previous work collections</p>
       </div>
     </transition>
-    <div class="contWorks">
+    <div class="contCheck">
+      <a href="#" @click="toggleSimple">
+        <span v-if="simple">Complicated List View</span>
+        <span v-else>Simple List View</span>
+      </a>
+    </div>
+    <div class="contWorks" v-if="!simple">
       <workviewer v-for="(elWork, index) in works" :key="index" :workdata="elWork">
       </workviewer>
+    </div>
+    <div class="contSimpleWorks" v-if="simple" >
+      <ul>
+        <li v-for="(elWork,index) in works" :key="index">
+          <a href="#" ><b>{{elWork.title}}</b></a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -18,11 +31,13 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+
 export default {
   data(){
     return {
       works:[],
-      query:''
+      query:'',
+      simple:false
     }
   },
   mounted(){
@@ -30,6 +45,11 @@ export default {
       console.log(res)
       this.works = res.data
     })
+  },
+  methods:{
+    toggleSimple(){
+      this.simple = !this.simple
+    }
   }
 }
 </script>
@@ -38,9 +58,47 @@ export default {
   text-align:center;
   padding:20px;
 }
-.contWorks{
-
+.contCheck{
+  display:flex;
+  justify-content:center;
+  a{
+    padding:10px;
+    color:black;
+    transition:.5s;
+    border:solid 1px black;
+    border-radius:2px;
+    margin:20px;
+    &:hover{
+      background-color:black;
+      color:white;
+      transition:.5s;
+      border:solid 1px transparent;
+    }
+  }
 }
+
+a{
+  text-decoration:none;
+}
+
+.contSimpleWorks{
+  ul{
+    list-style-type:none;
+    margin-left:-40px;
+  }
+  li{
+    padding:10px;
+    border-bottom:solid 1px rgba(0,0,0,0.3);
+    text-align:center;
+    a{
+      color:black;
+    }
+    &:hover{
+      background-color:rgba(0,0,0,0.5);
+    }
+  }
+}
+
 @media only screen and (max-width: 800px) {
 
 }

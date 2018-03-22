@@ -4559,6 +4559,10 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
+popper.js@1.12.5:
+  version "1.12.5"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.5.tgz#229e4dea01629e1f1a1e26991ffade5024220fa6"
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -6301,6 +6305,12 @@ vue-axios@^2.0.2:
 vue-carousel@^0.6.9:
   version "0.6.9"
   resolved "https://registry.yarnpkg.com/vue-carousel/-/vue-carousel-0.6.9.tgz#b5cdd0abefdc8ae99fe48ecde1d765869f91df6d"
+
+vue-directive-tooltip@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/vue-directive-tooltip/-/vue-directive-tooltip-1.4.4.tgz#547ff7a914c5b0e642a02e822ef01ae347775c13"
+  dependencies:
+    popper.js "1.12.5"
 
 vue-full-loading@^1.2.0:
   version "1.2.0"

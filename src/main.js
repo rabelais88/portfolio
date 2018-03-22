@@ -3,9 +3,11 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueSmoothScroll from 'vue-smooth-scroll'
-
 import VueScrollReveal from 'vue-scroll-reveal'
+import Tooltip from 'vue-directive-tooltip';
+import 'vue-directive-tooltip/css/index.css';
 
+Vue.use(Tooltip);
 Vue.use(VueRouter)
 Vue.use(vueSmoothScroll)
 
@@ -27,6 +29,7 @@ import works from './works.vue'
 import contact from './contact.vue'
 import workviewer from './elwork.vue'
 import searcher from './searcher.vue'
+
 
 Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
