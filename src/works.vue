@@ -9,7 +9,7 @@
     </transition>
     <div class="contCheck">
       <a href="#" @click="toggleSimple">
-        <span v-if="simple">Complicated List View</span>
+        <span v-if="simple">Full List View</span>
         <span v-else>Simple List View</span>
       </a>
     </div>
@@ -20,7 +20,7 @@
     <div class="contSimpleWorks" v-if="simple" >
       <ul>
         <li v-for="(elWork,index) in works" :key="index">
-          <a href="#" ><b>{{elWork.title}}</b></a>
+          <a :href="elWork.href" ><b>{{elWork.title}}</b></a>
         </li>
       </ul>
     </div>
@@ -82,20 +82,42 @@ a{
 }
 
 .contSimpleWorks{
+  display:flex;
+  justify-content:center;
+  transition:.5s;
   ul{
     list-style-type:none;
     margin-left:-40px;
   }
   li{
-    padding:10px;
-    border-bottom:solid 1px rgba(0,0,0,0.3);
     text-align:center;
+    position:relative;
+    padding:40px;
     a{
       color:black;
+      transition:.5s;
+      &:before{
+        content:'';
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:0%;
+        background-color:rgba(0,0,0,0.2);
+      }
+
+      &:hover{
+        transition:.5s;
+        font-size:1.5rem;
+        &:before{
+          transition:.5s;
+          height:100%;
+        }
+      }
+
+
     }
-    &:hover{
-      background-color:rgba(0,0,0,0.5);
-    }
+
   }
 }
 

@@ -26,6 +26,7 @@ try{
     settings = require('./settings')
   })
 }
+const info = require('./info')
 
 const db = pgp(settings.pgsqlauth)
 
@@ -42,7 +43,8 @@ const smtpTransport = nodemailer.createTransport({
 
 ig.use({access_token:settings.apikeys.instagram})
 
-http.listen(process.env.PORT || 3000, function(){
+//process.env.PORT for heroku
+http.listen(3001, function(){
   console.log("server is up at " + this.address().port)
   console.log("mode:" + process.env.NODE_ENV)
 })
@@ -56,7 +58,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/jsonindex',(req,res)=>{
-  res.json(settings.infoMain)
+  res.json(info.infoMain)
 })
 
 app.get('/articles',(req,res)=>{
@@ -107,7 +109,7 @@ app.post('/contact',(req,res)=>{
 })
 
 app.get('/jsonworks',(req,res)=>{
-  res.json(settings.infoWorks)
+  res.json(info.infoWorks)
 })
 
 app.get('/jsonarticles',(req,res)=>{

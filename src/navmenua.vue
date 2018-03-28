@@ -95,5 +95,10 @@ export default {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  a{
+    font-size:0.9rem;
+  }
+}
 
 </style>
