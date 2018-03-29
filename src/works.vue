@@ -13,17 +13,23 @@
         <span v-else>Simple List View</span>
       </a>
     </div>
-    <div class="contWorks" v-if="!simple">
-      <workviewer v-for="(elWork, index) in works" :key="index" :workdata="elWork">
-      </workviewer>
-    </div>
-    <div class="contSimpleWorks" v-if="simple" >
-      <ul>
-        <li v-for="(elWork,index) in works" :key="index">
-          <a :href="elWork.href" ><b>{{elWork.title}}</b></a>
-        </li>
-      </ul>
-    </div>
+    <transition name="fadeup">
+      <div class="contWorks" v-if="!simple">
+        <workviewer v-for="(elWork, index) in works" :key="index" :workdata="elWork" :workindex="index">
+        </workviewer>
+      </div>
+    </transition>
+    <transition name="fadeup">
+      <div class="contSimpleWorks" v-if="simple" >
+        <ul>
+          <li v-for="(elWork,index) in works" :key="index">
+            <router-link :to="'/workview/' + index" tag="a">
+              <b>{{elWork.title}}</b>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 <script>

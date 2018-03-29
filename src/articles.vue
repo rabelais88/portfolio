@@ -10,10 +10,10 @@
       </div>
     </transition>
     <searcher sample="keyword" @search="filterPost"></searcher>
-    <div id="contPosts">
+    <transition-group name="fadeup" id="contPosts">
       <postviewer v-for="(elPost, index) in filteredPosts" :key="index" :postdata="elPost">
       </postviewer>
-    </div>
+    </transition-group>
   </div>
 </template>
 

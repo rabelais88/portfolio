@@ -1,6 +1,7 @@
 <template>
   <div class="elWork">
-    <a :href="workdata.href">
+    <router-link :to="'/workview/' + workindex" tag="a">
+    <!-- <a :href="workdata.href"> -->
     <div class="photofy">
       <div :style="{ backgroundImage: 'url(' + workdata.photo + ')' }"></div>
     </div>
@@ -9,17 +10,20 @@
       <h2>{{ workdata.title }}</h2>
       <p>{{ workdata.content }}</p>
     </div>
-    </a>
+    <!-- </a> -->
+    </router-link>
   </div>
 </template>
 <script>
   export default {
-    props:['workdata']
+    props:['workdata','workindex']
   }
 </script>
 <style lang="scss" scoped>
 
 .elWork{
+  border-top:solid 1px black;
+  border-bottom:solid 1px black;
   h1{
     font-size:3rem;
   }

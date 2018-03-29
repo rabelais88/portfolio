@@ -57,10 +57,6 @@ app.get('/',(req,res)=>{
   })
 })
 
-app.get('/jsonindex',(req,res)=>{
-  res.json(info.infoMain)
-})
-
 app.get('/articles',(req,res)=>{
   res.redirect('/')
 })
@@ -70,6 +66,10 @@ app.get('/works',(req,res)=>{
 })
 
 app.get('/contact',(req,res)=>{
+  res.redirect('/')
+})
+
+app.get('/workview/:workid',(req,res)=>{
   res.redirect('/')
 })
 
@@ -108,6 +108,13 @@ app.post('/contact',(req,res)=>{
   return asyncmailer(req,res)
 })
 
+app.get('/jsonindex',(req,res)=>{
+  res.json(info.infoMain)
+})
+
+app.get('/jsonworkdetail/:workid',(req,res)=>{
+  res.json(info.infoWorks[Math.ceil(req.params.workid)])
+})
 app.get('/jsonworks',(req,res)=>{
   res.json(info.infoWorks)
 })

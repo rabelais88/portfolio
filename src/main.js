@@ -29,6 +29,7 @@ import works from './works.vue'
 import contact from './contact.vue'
 import workviewer from './elwork.vue'
 import searcher from './searcher.vue'
+import workdetail from './workdetail.vue'
 
 
 Vue.component('videoback', videoback)
@@ -43,12 +44,20 @@ const routes = [
   { path : '/', component: index },
   { path : '/articles',component: articles },
   { path : '/works', component: works},
-  { path : '/contact', component: contact}
+  { path : '/contact', component: contact},
+  { path : '/workview/:workid', component: workdetail}
 ]
 
 const router = new VueRouter({
   mode:'history',
-  routes:routes
+  routes:routes,
+  scrollBehavior (to, from, savedPosition){
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 new Vue({
@@ -69,7 +78,8 @@ new Vue({
     works:works,
     contact:contact,
     workviewer:workviewer,
-    searcher:searcher
+    searcher:searcher,
+    workdetail:workdetail
   },
   router: router
 })

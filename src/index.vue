@@ -50,7 +50,9 @@
       <div class="contSkill">
         <label for="search"><b>Try search among my skillsets!</b></label>
         <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
-        <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
+        <transition-group name="fadeup">
+          <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
+        </transition-group>
         <p>
           Specific skill name or keywords
         </p>
@@ -164,12 +166,41 @@ export default {
     box-shadow:0 3px 3px rgba(0,0,0,0.4);
 }
 
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(255,255,255,  0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);
+    box-shadow: 0 0 0 0 rgba(255,255,255,  0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 10px rgba(255,255,255,  0);
+      box-shadow: 0 0 0 10px rgba(255,255,255,  0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+      box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+  }
+}
+
 .clicker {
   transition:0.5s;
   padding:10px;
+  border-radius:50px;
+  animation: pulse 2s infinite;
 }
 .clicker:hover{
   opacity:0.4;
+  animation:none;
   transition:0.5s;
 }
 
@@ -197,7 +228,9 @@ export default {
     margin:20px;
   }
   img{
-    max-width:80%;
+    width:50%;
+    height:50%;
+    max-width:450px;
     object-fit:cover;
     margin:20px;
   }
