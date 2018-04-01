@@ -229,7 +229,6 @@ export default {
     width:50%;
     height:50%;
     max-width:450px;
-    object-fit:cover;
     margin:20px;
   }
   a{
@@ -279,7 +278,7 @@ export default {
 
   img{
     margin-bottom:10px;
-    object-fit:cover;
+    object-fit:contain;
     max-width:100px;
     max-height:100px;
   }
