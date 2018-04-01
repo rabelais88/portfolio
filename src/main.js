@@ -30,14 +30,19 @@ import contact from './contact.vue'
 import workviewer from './elwork.vue'
 import searcher from './searcher.vue'
 import workdetail from './workdetail.vue'
+import loading from 'vue-full-loading'
+import myloader from './loadercustom.vue'
 
 
+//global component settings
 Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
 Vue.component('navmenua',navmenua)
 Vue.component('postviewer',postviewer)
 Vue.component('workviewer',workviewer)
 Vue.component('searcher',searcher)
+Vue.component('loading',loading)
+Vue.component('myloader',myloader)
 
 
 const routes = [
@@ -72,12 +77,8 @@ new Vue({
   </div>`,
   components:{
     articles:articles,
-    videoback:videoback,
-    navmenu:navmenu,
-    postviewer:postviewer,
     works:works,
     contact:contact,
-    workviewer:workviewer,
     searcher:searcher,
     workdetail:workdetail
   },

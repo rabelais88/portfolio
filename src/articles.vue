@@ -1,6 +1,7 @@
 <template>
   <div>
     <navmenua></navmenua>
+    <myloader msg="loading..." v-if="isLoading"></myloader>
     <transition name="fadeup" appear>
       <div class="title">
         <h1>Recent posts</h1>
@@ -21,19 +22,22 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 Vue.use(VueAxios,axios)
 
 export default {
   data(){
     return{
       posts:[],
-      query:''
+      query:'',
+      isLoading:true
     }
   },
   mounted(){
     Vue.axios.get('/jsonarticles').then((res)=>{
       console.log(res)
       this.posts = res.data
+      this.isLoading = false
     })
   },
   methods:{
@@ -53,16 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-#backdrop{
-  * {font-family: 'Permanent Marker', cursive;}
-  z-index:-1;
-  position:fixed;
-  font-size:9rem;
-  top:0;
-  opacity:0.1;
-  color:rgba(0,0,0,0.3);
-}
+
 #contPosts{
   display:flex;
   flex-wrap:wrap;

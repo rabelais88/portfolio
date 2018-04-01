@@ -1,6 +1,7 @@
 <template>
   <div>
     <navmenua></navmenua>
+    <myloader msg="loading..." v-if="isLoading"></myloader>
     <transition name="fadeup" appear>
       <div class="title">
         <h1>Works</h1>
@@ -23,9 +24,9 @@
       <div class="contSimpleWorks" v-if="simple" >
         <ul>
           <li v-for="(elWork,index) in works" :key="index">
-            <router-link :to="'/workview/' + index" tag="a">
+            <a :href="elWork.href">
               <b>{{elWork.title}}</b>
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -43,13 +44,15 @@ export default {
     return {
       works:[],
       query:'',
-      simple:false
+      simple:false,
+      isLoading:true
     }
   },
   mounted(){
     Vue.axios.get('/jsonworks').then((res)=>{
       console.log(res)
       this.works = res.data
+      this.isLoading = false
     })
   },
   methods:{

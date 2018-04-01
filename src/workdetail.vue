@@ -12,7 +12,7 @@ import VueAxios from 'vue-axios'
 export default {
   data(){
     return {
-      workdetail:[]
+      workdetail:{}
     }
   },
   mounted(){

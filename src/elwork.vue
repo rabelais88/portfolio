@@ -1,17 +1,17 @@
 <template>
   <div class="elWork">
-    <router-link :to="'/workview/' + workindex" tag="a">
-    <!-- <a :href="workdata.href"> -->
-    <div class="photofy">
-      <div :style="{ backgroundImage: 'url(' + workdata.photo + ')' }"></div>
-    </div>
-    <div class="textize">
-      <h1>{{ workdata.year }}</h1>
-      <h2>{{ workdata.title }}</h2>
-      <p>{{ workdata.content }}</p>
-    </div>
-    <!-- </a> -->
-    </router-link>
+    <!-- <router-link :to="'/workview/' + workindex" tag="a"> -->
+    <a :href="workdata.href">
+      <div class="photofy">
+        <div :style="{ backgroundImage: 'url(' + workdata.photo + ')' }"></div>
+      </div>
+      <div class="textize">
+        <h1>{{ workdata.year }}</h1>
+        <h2>{{ workdata.title }}</h2>
+        <p>{{ workdata.content }}</p>
+      </div>
+    </a>
+    <!-- </router-link> -->
   </div>
 </template>
 <script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <myloader msg="loading..." v-if="isLoading"></myloader>
     <videoback :sources="['./dist/backdrop.mp4']" img="/dist/backdrop.jpg" class="videodrop">
       <navmenu></navmenu>
       <div class="backdrop">
@@ -21,7 +22,6 @@
         </a>
       </div>
     </videoback>
-    <loading :show="isLoading" label="loading main screen..."></loading>
     <div id="about">
       <h1 v-scroll-reveal.reset>Hello,</h1>
       <h2 v-scroll-reveal.reset>안녕하세요,</h2>
@@ -77,7 +77,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import loading from 'vue-full-loading'
 import { Carousel, Slide } from 'vue-carousel'
 
 export default {
@@ -92,8 +91,7 @@ export default {
   },
   components:{
     Carousel,
-    Slide,
-    loading
+    Slide
   },
   mounted(){
     Vue.axios.get('/jsonindex').then((res)=>{
