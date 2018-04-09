@@ -73,14 +73,20 @@ app.get('/workview/:workid',(req,res)=>{
   res.redirect('/')
 })
 
+function XSSsanitize(text){
+  return text.replace(/[\[\[\*\$\.(){}!&<>"';=+-]/g,'_')
+}
+
 function sendmail(sender,subject,htmlContent){
   return new Promise((resolve,reject)=>{
+
+
     const mailOptions = {  
       from: sender,
       to: settings.contactEmail,
-      subject: subject,
+      subject: XSSsanitize(subject),
     
-      html: htmlContent
+      html: XSSsanitize(htmlContent)
     };
 
     smtpTransport.sendMail(mailOptions,(err,res) =>{

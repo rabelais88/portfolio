@@ -50,7 +50,7 @@
       <div class="contSkill">
         <label for="search"><b>Try search among my skillsets!</b></label>
         <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
-        <transition-group name="fadeup">
+        <transition-group name="fadeup" class="grpSkill">
           <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
         </transition-group>
         <p>
@@ -296,6 +296,10 @@ export default {
   margin-bottom:50px;
   background-color:rgb(224, 224, 224);
   padding:40px;
+}
+
+.grpSkill > div{
+  padding: 10px 0 10px 0;
 }
 
 @media only screen and (max-width: 800px) {

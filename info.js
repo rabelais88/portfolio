@@ -1,7 +1,7 @@
 module.exports = {
     infoMain:{
     location:'Incheon, South Korea',
-    languages:[['English','Advanced','european romance language'],['Korean','Native','asian language'],['French','DELF B1','european romance language'],['Chinese','HSK B1','asian language'],['Japanese','JLPT N2','asian language'],['Spanish','Intermediate','european romance language']],
+    languages:[['English','Advanced','european romance language'],['Korean','Native','asian language'],['French','DELF B1','european romance language'],['Chinese','HSK 4','asian language'],['Japanese','JLPT N2','asian language'],['Spanish','Intermediate','european romance language']],
     programs:[
       ['Node.js', '/dist/logo_node.png','js javascript backend'],
       ['React.js','/dist/logo_react.png','js javascript frontend'],
