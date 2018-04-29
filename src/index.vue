@@ -36,26 +36,8 @@
           <div>{{elLang[1]}}</div>
         </div>
       </div>
-      <h2>I use {{ programs.length }} tools</h2>
-      <div class="margin40px">
-      <carousel :navigationEnabled="true" :perPage="3" :perPageCustom="[[768, 4]]">
-        <slide v-for="(elProg, index) in programs" :key="index" >
-          <div class="badgeTool">
-            <img v-if="elProg[1]" :src="elProg[1]"/>
-            {{elProg[0]}}
-          </div>
-        </slide>
-      </carousel>
-      </div>
       <div class="contSkill">
-        <label for="search"><b>Try search among my skillsets!</b></label>
-        <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
-        <transition-group name="fadeup" class="grpSkill">
-          <div v-for="(elFiltered, index) in filteredSkills" :key="index">{{elFiltered[0]}}</div>
-        </transition-group>
-        <p>
-          Specific skill name or keywords
-        </p>
+        <skills :skillset="programs"></skills>
         <router-link to="/works" tag="a">MY PORTFOLIO</router-link>
       </div>
       <img src="/dist/engine.jpg" />
@@ -78,6 +60,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { Carousel, Slide } from 'vue-carousel'
+import skills from './skills.vue'
 
 export default {
   data(){
@@ -91,7 +74,8 @@ export default {
   },
   components:{
     Carousel,
-    Slide
+    Slide,
+    skills
   },
   mounted(){
     Vue.axios.get('/jsonindex').then((res)=>{
@@ -103,25 +87,10 @@ export default {
     })
   },
   methods:{
-    skillSearch(query){
-      this.querySkill = query
-    }
+
   },
   computed:{
-    filteredSkills(){
-      if(this.querySkill){
-        return [...this.languages,...this.programs].filter(elSkill=>{
-          let subCondition = false
-          const query = this.querySkill.toLowerCase()
-          if(elSkill.length >= 3){
-            subCondition = elSkill[2].toLowerCase().includes(query)
-          }
-          return elSkill[0].toLowerCase().includes(query) || subCondition
-        })
-      }else{
-        return []
-      }
-    }
+
   }
 }
 </script>

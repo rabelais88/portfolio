@@ -14,15 +14,15 @@ module.exports = {
       ['MySQL','/dist/logo_mysql.png','sql database db'],
       ['Python','/dist/logo_python.png','programming language'],
       ['MongoDB','/dist/logo_mongodb.png','nosql database db'],
-      ['JQuery','/dist/logo_jquery.png','js javascript library'],
+      ['JQuery','/dist/logo_jquery.png','js javascript library frontend'],
       ['SASS','/dist/logo_sass.png','css stylesheet'],
       ['Yarn','/dist/logo_yarn.png','package dependency management'],
-      ['Phantom.js','/dist/logo_phantomjs.png', 'js javascript crawler library'],
-      ['Casper.js','/dist/logo_casperjs.png','crawler library js javascript'],
-      ['Adobe Photoshop','/dist/logo_photoshop.png','graphic design'],
-      ['Adobe Illustrator','/dist/logo_illustrator.png', 'graphic design'],
-      ['Adobe After Effects','/dist/logo_aftereffects.png', 'graphic design'],
-      ['php','/dist/logo_php.png','programming language runtime']
+      ['Phantom.js','/dist/logo_phantomjs.png', 'js javascript crawler library web scraping'],
+      ['Casper.js','/dist/logo_casperjs.png','crawler library js javascript web scraping'],
+      ['Adobe Photoshop','/dist/logo_photoshop.png','graphics design'],
+      ['Adobe Illustrator','/dist/logo_illustrator.png', 'graphics design'],
+      ['Adobe After Effects','/dist/logo_aftereffects.png', 'graphics design'],
+      ['php','/dist/logo_php.png','programming language runtime backend']
     ]
   },
   infoWorks:[

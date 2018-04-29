@@ -1,6 +1,7 @@
 <template>
   <div>
     <navmenua></navmenua>
+    <myloader msg="sending the message..." v-if="isLoading"></myloader>
     <form class="frmContact" @submit.prevent="submit">
       Hello,<br/>
       I am from <input v-model="name" placeholder="Excellent Firm/Studio" required/><br/>
@@ -16,7 +17,6 @@
       <h3 slot="header">The mail has been sent successfully</h3>
       <p slot="body">Thank you, I'll be back to you in no time!</p>
     </modal>
-    <loading :show="isLoading" label="sending the message..."></loading>
   </div>
 </template>
 <script>
@@ -24,7 +24,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import modal from './dialog.vue'
-import loading from 'vue-full-loading'
+
 export default {
   data(){
     return{
@@ -56,8 +56,7 @@ export default {
     }
   },
   components:{
-    modal:modal,
-    loading:loading
+    modal:modal
   }
 }
 </script>
