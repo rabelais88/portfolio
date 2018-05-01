@@ -2,11 +2,10 @@
   <div>
     <h2>I use {{ skillset.length }} tools</h2>
     <p>search among my skillsets!</p>
-    <searcher sample="js, graphic, language..." @search="skillSearch"></searcher>
 
     <div class="filterCont">
       <div class="filters" v-for="(el,i) in filters" :key="i">
-        <input type="checkbox" :id="el" v-model="anotherQuery[el]">
+        <input type="checkbox" :id="el" v-model="addQuery[el]">
         <label :for="el">{{el}}</label>
       </div>
     </div>
@@ -26,29 +25,25 @@ export default {
   data(){
     return{
       querySkill: '',
-      anotherQuery: {
+      addQuery: {
       },
-      filters:['frontend','backend','programming language','web scraping', 'database', 'graphics']
-    }
-  },
-  methods:{
-    skillSearch(query){
-      this.querySkill = query
+      filters:['frontend','backend','web scraping', 'database', 'graphics','misc']
     }
   },
   computed:{
     filteredSkills(){
-        const secondCondition = Object.keys(this.anotherQuery).filter(el=>this.anotherQuery[el]).join(' ').split(' ').forEach(el=>{
-          
-        })
+      //if no skillset is selected, show everything
+      if(Object.values(this.addQuery).includes(true) === false) return this.skillset
 
-        return this.skillset.filter(elSkill=>{
-          let subCondition = false
-          const query = this.querySkill.toLowerCase()
-          if(elSkill.length >= 3){
-            subCondition = elSkill[2].toLowerCase().includes(query)
-          }
-          return elSkill[0].toLowerCase().includes(query) || subCondition
+      const queries = Object.entries(this.addQuery).filter(el=>el[1])
+      //if a skillset is selected, use filter
+      return this.skillset.filter(elSkill=>{
+        //do not use .forEach in order to return value inside
+        for(let i=0;i <queries.length;i++){
+          const elQuery = queries[i]
+          if(elSkill[2].includes(elQuery[0])) return true
+        }
+        return false
       })
     }
   }
