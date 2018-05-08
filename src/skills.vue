@@ -65,12 +65,27 @@ export default {
     flex-wrap:wrap;
     justify-content:center;
     div {
-      width:200px;
-      height:200px;
+      width:20%;
+      height:20%;
+      padding:5%;
+      word-wrap:break-word;
       > img{
-        max-width:100px;
-        max-height:100px;
+        max-width:100%;
+        max-height:100%;
       }
     }
   }
+
+@media only screen and (min-width: 500px) {
+  .skillCont div {
+      width:90px;
+      height:90px;
+      padding:40px;
+      word-wrap:break-word;
+      > img{
+        max-width:90px;
+        max-height:90px;
+    }
+  }
+}
 </style>

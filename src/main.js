@@ -27,10 +27,11 @@ import navmenua from './navmenua.vue'
 import postviewer from './element.vue'
 import works from './works.vue'
 import contact from './contact.vue'
-import workviewer from './elwork.vue'
 import searcher from './searcher.vue'
 import workdetail from './workdetail.vue'
 import myloader from './loadercustom.vue'
+
+import workviewer2 from './components/elwork2.vue'
 
 
 //global component settings
@@ -38,7 +39,7 @@ Vue.component('videoback', videoback)
 Vue.component('navmenu',navmenu)
 Vue.component('navmenua',navmenua)
 Vue.component('postviewer',postviewer)
-Vue.component('workviewer',workviewer)
+Vue.component('workviewer2',workviewer2)
 Vue.component('searcher',searcher)
 Vue.component('myloader',myloader)
 
