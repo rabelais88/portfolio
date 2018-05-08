@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   infoWorks:[
-    {year:'2018',title:'Web Crawling Report', photo:'/dist/work_crawler.jpg',
+    {year:'2018',title:'Web Crawling Report', photo:'/dist/work_worddc.jpg',
     content:'Word crawling report',href:'http://worddc.herokuapp.com'},
     {year:'2018',title:'D3.js interactive', photo:'/dist/work_d3.jpg',
     content:'d3 work', href:'https://codepen.io/rabelais88/full/qYVbOK'},
