@@ -3,11 +3,12 @@ module.exports = {
     location:'Incheon, South Korea',
     languages:[['English','Advanced','european romance language'],['Korean','Native','asian language'],['French','DELF B1','european romance language'],['Chinese','HSK 4','asian language'],['Japanese','JLPT N2','asian language'],['Spanish','Intermediate','european romance language']],
     programs:[
-      ['Node.js', '/dist/logo_node.png','backend'],
       ['React.js','/dist/logo_react.png','frontend'],
       ['Vue.js','/dist/logo_vue.png','frontend'],
       ['Webpack','/dist/logo_webpack.jpg','frontend'],
       ['Babel','/dist/logo_babel.png','misc frontend'],
+      ['d3.js','/dist/logo_d3js.png','frontend misc'],
+      ['Node.js', '/dist/logo_node.png','backend'],
       ['Express.js','/dist/logo_express.png','backend'],
       ['Linux(CentOS)','/dist/logo_centos.png','backend'],
       ['PostgreSQL','/dist/logo_postgresql.png','database backend'],
@@ -19,13 +20,19 @@ module.exports = {
       ['Yarn','/dist/logo_yarn.png','misc'],
       ['Phantom.js','/dist/logo_phantomjs.png', 'web scraping'],
       ['Casper.js','/dist/logo_casperjs.png','web scraping'],
+      ['Headless Chrome','/dist/logo_chromium.svg','web scraping'],
       ['Adobe Photoshop','/dist/logo_photoshop.png','graphics'],
       ['Adobe Illustrator','/dist/logo_illustrator.png', 'graphics'],
       ['Adobe After Effects','/dist/logo_aftereffects.png', 'graphics'],
       ['php','/dist/logo_php.png','backend']
+
     ]
   },
   infoWorks:[
+    {year:'2018',title:'Web Crawling Report', photo:'/dist/work_worddc.jpg',
+    content:'Word crawling report',href:'http://worddc.herokuapp.com'},
+    {year:'2018',title:'D3.js interactive', photo:'/dist/work_d3.jpg',
+    content:'d3 work', href:'https://codepen.io/rabelais88/full/qYVbOK'},
     {year:'2018',title:'Stellar Marina Hotel',photo:'/dist/work_stellar.jpg',
     content:'My first commercial hotel site project.\nPostgreSQL + React(Admin Page) + JQuery + Node.js\npromotion management and reservation are fully implemented.\nlightweight, minimalistic design',
     href:'http://hotelstellar.herokuapp.com'},
